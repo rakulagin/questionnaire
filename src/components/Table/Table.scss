@@ -1,5 +1,4 @@
 .area {
-  //margin: 0 40px;
   margin: 50px;
   max-width: 320px;
 }
@@ -9,7 +8,6 @@
 }
 .table {
   width: 100%;
-  //margin: 0 40px;
 }
 
 .row {
@@ -42,6 +40,10 @@
 .col:hover {
   background: #008960;
   cursor: pointer;
+}
+
+.active {
+  background: #008960;
 }
 
 .col:first-of-type {

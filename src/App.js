@@ -6,8 +6,8 @@ import Table from "./components/Table/Table";
 function App() {
   return (
     <div className="quest">
-        {/*<Main/>*/}
-        {/*<Intro/>*/}
+        <Main/>
+        <Intro/>
         <Table/>
     </div>
   );
