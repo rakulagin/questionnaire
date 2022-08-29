@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  outline: none;
+  //font-family: roboto, -apple-system, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+
+}
+
+.quest {
+  position: absolute;
+  top: 5vh;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 414px;
+  min-height: 896px;
+  background: url("./assets/background.png");
+  background-size: contain;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+}
+
+.mockup {
+  margin-top: 67px;
+  background-color: #fff;
+  border-radius: 12px 12px 0 0;
+  min-height: calc(896px - 67px);
+}
