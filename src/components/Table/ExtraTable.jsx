@@ -3,11 +3,6 @@ import LastRow from "./LastRow";
 
 const ExtraTable = ({state, setState}) => {
 
-    const handler = (e) => {
-        setState(e.target.getAttribute('data-cords'))
-        // e.target.classList.add('active')
-    }
-
     return (
         <>
             <div className="row">
@@ -15,9 +10,8 @@ const ExtraTable = ({state, setState}) => {
                 {
                     [...Array(5)].map((el, index) =>
                         <div key={index}
-                             onClick = {handler}
-                             // className={state == index+1? "col active" : "col"}
-                            className={"col"}
+                             onClick = {e => setState(e.target.getAttribute('data-cords'))}
+                             className={state == index+1? "col active" : "col"}
                              data-cords={index + 1}>&nbsp;</div>)
                 }
             </div>
