@@ -1,0 +1,165 @@
+.mockup__wrapper {
+  padding: 44px 40px 88px 40px;
+}
+
+.theme {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 0.35px;
+  text-align: left;
+}
+.theme__bar {
+  width: 100%;
+  height: 16px;
+  background-color: #C4C4C4;
+  border-radius: 50px;
+  margin-bottom: 24px;
+}
+.theme__bar-progress {
+  width: 100px;
+  height: 100%;
+  background-color: #91009E;
+  border-radius: 50px 0 0 50px;
+}
+
+.theme__question {
+  height: 80px;
+}
+
+.theme__hint {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.25px;
+  text-align: left;
+  color: #999999;
+  margin-bottom: 16px;
+}
+
+.table-wrapper {
+  position: relative;
+}
+
+.table {
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  height: 62px;
+}
+
+.col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #efefef;
+  width: 62px;
+  border-right: 1px solid #9D9D9D;
+  border-bottom: 1px solid #9D9D9D;
+}
+
+.col:first-of-type {
+  width: 25px;
+  background: #C4C4C4;
+  border-left: 1px solid #9D9D9D;
+}
+
+.row:first-of-type .col {
+  border-top: 1px solid #9D9D9D;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.col:hover {
+  background: #008960;
+  cursor: pointer;
+}
+
+.active {
+  background: #008960;
+}
+
+.col:first-of-type {
+  cursor: default;
+  background: #C4C4C4;
+}
+
+.row:last-of-type {
+  height: 25px;
+  cursor: default;
+}
+.row:last-of-type .col {
+  cursor: default;
+  background: #C4C4C4;
+}
+.row:last-of-type .col:first-of-type {
+  background: #9D9B9B;
+}
+
+.question {
+  transform: rotate(180deg);
+  writing-mode: vertical-rl;
+  padding: 0 0 0 10px;
+  position: absolute;
+  bottom: 25px;
+  left: -30px;
+}
+
+.question2 {
+  padding: 10px 0 0 0;
+  margin: 0 0 0 30px;
+  height: 48px;
+}
+
+.question--text {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.4px;
+  text-align: left;
+}
+
+.extra-table-wrapper {
+  margin-top: 34px;
+}
+
+.extra-question {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 23px;
+  letter-spacing: 0.35px;
+  text-align: left;
+  padding-bottom: 16px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60px;
+}
+
+.button {
+  width: 160px;
+  height: 71px;
+  border-radius: 12px;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.4px;
+}
+
+.button-prev {
+  background-color: #FFFFFF;
+  color: #006BE0;
+  border: 1px solid #006BE0;
+}
+
+.button-next {
+  background-color: #006BE0;
+  color: #FFFFFF;
+  border: 1px solid #006BE0;
+}
+
+/*# sourceMappingURL=Tables.css.map */

@@ -3,13 +3,8 @@
   padding: 0;
   list-style: none;
   outline: none;
-  //font-family: roboto, -apple-system, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-
 }
 
 .background {
@@ -26,8 +21,9 @@ body {
 
 .mockup {
   margin-top: 67px;
-  //padding-top: 32px;
   background-color: #fff;
   border-radius: 12px 12px 0 0;
-  min-height: calc(896px - 67px);
+  min-height: 829px;
 }
+
+/*# sourceMappingURL=index.css.map */

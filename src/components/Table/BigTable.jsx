@@ -1,7 +1,7 @@
 import React from "react";
 import LastRow from "./LastRow";
 
-const MainTable = ({state, setState}) => {
+const BigTable = ({state, setState}) => {
 
 
 
@@ -31,4 +31,4 @@ const MainTable = ({state, setState}) => {
     )
 }
 
-export default MainTable
+export default BigTable
