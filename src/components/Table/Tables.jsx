@@ -16,31 +16,55 @@ const Tables = () => {
     const [numberOfQuestion, setNumberOfQuestion] = useState(0)
     const [stage, setStage] = useState({
         id: 0,
-        name: "default",
+        group: "",
         count: 1
     });
 
 
+    // useEffect(() => {
+    //     axios.get('https://alexb.host/questions')
+    //         .then(({ data }) => {
+    //             setQuestions(data);
+    //         });
+    //     axios.get('https://alexb.host/groups')
+    //         .then(({ data }) => {
+    //             setGroups(data);
+    //         });
+    //     axios.get('https://alexb.host/groups')
+    //         .then(({ data }) => {
+    //             setStage(data[0]);
+    //         })
+    // }, []);
+
     useEffect(() => {
-        axios.get('https://alexb.host/questions')
+        axios.get('https://alexb.host/testquestions')
             .then(({ data }) => {
                 setQuestions(data);
             });
-        axios.get('https://alexb.host/groups')
+        axios.get('https://alexb.host/testgroups')
             .then(({ data }) => {
                 setGroups(data);
             });
+        axios.get('https://alexb.host/testgroups')
+            .then(({ data }) => {
+                setStage(data[0]);
+            })
     }, []);
 
-    const nextQuestion = () => {
-        if (numberOfQuestion < 97) {
-            setNumberOfQuestion(numberOfQuestion+1)
+    const nextQuestion = (numberOfQuestion) => {
+        if (numberOfQuestion + 1 === stage.count) {
             nextStage()
+            setNumberOfQuestion(0)
+        } else {
+            setNumberOfQuestion(numberOfQuestion+1)
         }
     }
 
     const prevQuestion = () => {
-        if (numberOfQuestion > 0) {
+        if (numberOfQuestion === 0) {
+            prevStage()
+            setNumberOfQuestion(groups[stage.id].count)
+        } else {
             setNumberOfQuestion(numberOfQuestion-1)
         }
     }
@@ -49,30 +73,43 @@ const Tables = () => {
         if (stage.id + 1 < 5) {
             setStage({
                 id: stage.id + 1,
-                name: groups[stage.id].group,
+                group: groups[stage.id].group,
                 count: groups[stage.id].count
             });
         } else {
-            setStage({ id: 5, name: "Тестирование окончено", count: 0 });
+            setStage({ id: 5, group: "Тестирование окончено", count: 0 });
         }
     };
 
-    const currentStage = () => {
-
+    const prevStage = () => {
+        console.log("prev")
+        setStage({
+            id: stage.id - 1,
+            group: groups[stage.id - 1].group,
+            count: groups[stage.id - 1].count
+        })
     }
+
+    console.log(stage)
+    console.log(stage.group)
+    console.log(numberOfQuestion)
+
 
     return (
         <div className="mockup">
             <div className="mockup__wrapper">
-                <p className="theme">личность</p>
+                <p className="theme">{stage.group}</p>
                 <div className="theme__bar">
                     <div className="theme__bar-progress"></div>
                 </div>
-                {<h2 className="theme__question">{questions && questions[`${numberOfQuestion}`].question}</h2>}
+                <h2 className="theme__question">
+                    {/*{questions && questions.filter((el) => el.group_id === stage.id)[numberOfQuestion].question}*/}
+                </h2>
                 <p className="theme__hint">Выберите значение по шкале от 1 до 5 для каждого утверждения</p>
-                {/*<div className="area">*/}
                     <div className="table-wrapper">
-                        <div className="question question--text">{questions && questions[`${numberOfQuestion}`].x}</div>
+                        {/*<div className="question question--text">*/}
+                        {/*    {questions && questions.filter((el) => el.group_id === stage.id)[numberOfQuestion].x}*/}
+                        {/*</div>*/}
                         <div className="table">
                             <BigTable
                                 state={firstAnswer}
@@ -80,12 +117,18 @@ const Tables = () => {
                             />
                         </div>
                     </div>
-                    <div className="question2 question--text">{questions && questions[`${numberOfQuestion}`].y}</div>
+                    <div className="question2 question--text">
+                        {/*{questions && questions.filter((el) => el.group_id === stage.id)[numberOfQuestion].y}*/}
+                    </div>
 
                     <p>{stage.id}</p>
-                    <p>{stage.name}</p>
+                    <p>{stage.group}</p>
                     <p>{stage.count}</p>
-                {questions && questions[`${numberOfQuestion}`].x}
+                <p>{numberOfQuestion}</p>
+                <hr/>
+                {groups && <p>{groups[stage.id - 1].group}</p>}
+                {groups && <p>{groups[stage.id - 1].count}</p>}
+
 
                     <div className="extra-table-wrapper">
                         <div className="extra-question">На сколько эта ценность и вопрос понятны для вас?</div>
@@ -106,10 +149,9 @@ const Tables = () => {
                             />
                         </div>
                     </div>
-                {/*</div>*/}
                 <div className="buttons">
                     <button className="button button-prev" onClick={ prevQuestion }>Назад</button>
-                    <button className="button button-next" onClick={ nextQuestion }>Далее</button>
+                    <button className="button button-next" onClick={ () =>  nextQuestion(numberOfQuestion) }>Далее</button>
                 </div>
             </div>
         </div>
