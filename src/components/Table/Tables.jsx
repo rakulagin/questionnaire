@@ -15,7 +15,7 @@ const Tables = () => {
     const [groups, setGroups] = useState(null)
     const [numberOfQuestion, setNumberOfQuestion] = useState(0)
     const [stage, setStage] = useState({
-        id: 0,
+        id: 1,
         group: "",
         count: 1
     });
@@ -63,7 +63,7 @@ const Tables = () => {
     const prevQuestion = () => {
         if (numberOfQuestion === 0) {
             prevStage()
-            setNumberOfQuestion(groups[stage.id].count)
+            setNumberOfQuestion(groups[stage.id-1].count)
         } else {
             setNumberOfQuestion(numberOfQuestion-1)
         }
@@ -85,14 +85,15 @@ const Tables = () => {
         console.log("prev")
         setStage({
             id: stage.id - 1,
-            group: groups[stage.id - 1].group,
-            count: groups[stage.id - 1].count
+            group: groups[stage.id - 2].group,
+            count: groups[stage.id - 2].count
         })
     }
 
     console.log(stage)
     console.log(stage.group)
     console.log(numberOfQuestion)
+    
 
 
     return (
@@ -126,8 +127,8 @@ const Tables = () => {
                     <p>{stage.count}</p>
                 <p>{numberOfQuestion}</p>
                 <hr/>
-                {groups && <p>{groups[stage.id - 1].group}</p>}
-                {groups && <p>{groups[stage.id - 1].count}</p>}
+                {/* {groups && <p>{groups[stage.id - 1].group}</p>}
+                {groups && <p>{groups[stage.id - 1].count}</p>} */}
 
 
                     <div className="extra-table-wrapper">
