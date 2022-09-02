@@ -63,7 +63,7 @@ const Tables = () => {
     const prevQuestion = () => {
         if (numberOfQuestion === 0) {
             prevStage()
-            setNumberOfQuestion(groups[stage.id-1].count)
+            setNumberOfQuestion(groups[stage.id-2].count-1)
         } else {
             setNumberOfQuestion(numberOfQuestion-1)
         }
@@ -83,6 +83,10 @@ const Tables = () => {
 
     const prevStage = () => {
         console.log("prev")
+        console.log("stage id:", stage.id)
+        // console.log("group ins: ", groups[stage.id].group)
+        // console.log("count ins: ", groups[stage.id].count)
+        console.log("number of Q ins", numberOfQuestion)
         setStage({
             id: stage.id - 1,
             group: groups[stage.id - 2].group,
@@ -90,9 +94,11 @@ const Tables = () => {
         })
     }
 
-    console.log(stage)
-    console.log(stage.group)
-    console.log(numberOfQuestion)
+    console.log("---------")
+    console.log("stage:", stage)
+    console.log("stage.group:", stage.group)
+    console.log("number of Q:", numberOfQuestion)
+    console.log("---------")
     
 
 
