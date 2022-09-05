@@ -21,35 +21,35 @@ const Tables = () => {
     });
 
 
-    // useEffect(() => {
-    //     axios.get('https://alexb.host/questions')
-    //         .then(({ data }) => {
-    //             setQuestions(data);
-    //         });
-    //     axios.get('https://alexb.host/groups')
-    //         .then(({ data }) => {
-    //             setGroups(data);
-    //         });
-    //     axios.get('https://alexb.host/groups')
-    //         .then(({ data }) => {
-    //             setStage(data[0]);
-    //         })
-    // }, []);
-
     useEffect(() => {
-        axios.get('https://alexb.host/testquestions')
+        axios.get('https://alexb.host/questions')
             .then(({ data }) => {
                 setQuestions(data);
             });
-        axios.get('https://alexb.host/testgroups')
+        axios.get('https://alexb.host/groups')
             .then(({ data }) => {
                 setGroups(data);
             });
-        axios.get('https://alexb.host/testgroups')
+        axios.get('https://alexb.host/groups')
             .then(({ data }) => {
                 setStage(data[0]);
             })
     }, []);
+
+    // useEffect(() => {
+    //     axios.get('https://alexb.host/testquestions')
+    //         .then(({ data }) => {
+    //             setQuestions(data);
+    //         });
+    //     axios.get('https://alexb.host/testgroups')
+    //         .then(({ data }) => {
+    //             setGroups(data);
+    //         });
+    //     axios.get('https://alexb.host/testgroups')
+    //         .then(({ data }) => {
+    //             setStage(data[0]);
+    //         })
+    // }, []);
 
     const nextQuestion = (numberOfQuestion) => {
         if (numberOfQuestion + 1 === stage.count) {
