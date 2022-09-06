@@ -94,11 +94,11 @@ const Tables = () => {
         })
     }
 
-    console.log("---------")
-    console.log("stage:", stage)
-    console.log("stage.group:", stage.group)
-    console.log("number of Q:", numberOfQuestion)
-    console.log("---------")
+    // console.log("---------")
+    // console.log("stage:", stage)
+    // console.log("stage.group:", stage.group)
+    // console.log("number of Q:", numberOfQuestion)
+    // console.log("---------")
     
 
 
@@ -110,13 +110,13 @@ const Tables = () => {
                     <div className="theme__bar-progress"></div>
                 </div>
                 <h2 className="theme__question">
-                    {/*{questions && questions.filter((el) => el.group_id === stage.id)[numberOfQuestion].question}*/}
+                    {questions && questions.filter((el) => el.group_id === stage.id)[numberOfQuestion].question}
                 </h2>
                 <p className="theme__hint">Выберите значение по шкале от 1 до 5 для каждого утверждения</p>
                     <div className="table-wrapper">
-                        {/*<div className="question question--text">*/}
-                        {/*    {questions && questions.filter((el) => el.group_id === stage.id)[numberOfQuestion].x}*/}
-                        {/*</div>*/}
+                        <div className="question question--text">
+                           {questions && questions.filter((el) => el.group_id === stage.id)[numberOfQuestion].x}
+                        </div>
                         <div className="table">
                             <BigTable
                                 state={firstAnswer}
@@ -125,17 +125,8 @@ const Tables = () => {
                         </div>
                     </div>
                     <div className="question2 question--text">
-                        {/*{questions && questions.filter((el) => el.group_id === stage.id)[numberOfQuestion].y}*/}
+                        {questions && questions.filter((el) => el.group_id === stage.id)[numberOfQuestion].y}
                     </div>
-
-                    <p>{stage.id}</p>
-                    <p>{stage.group}</p>
-                    <p>{stage.count}</p>
-                <p>{numberOfQuestion}</p>
-                <hr/>
-                {/* {groups && <p>{groups[stage.id - 1].group}</p>}
-                {groups && <p>{groups[stage.id - 1].count}</p>} */}
-
 
                     <div className="extra-table-wrapper">
                         <div className="extra-question">На сколько эта ценность и вопрос понятны для вас?</div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link} from "react-router-dom"
 
 import './Main.scss'
 
@@ -14,7 +15,14 @@ const Main = () => {
                     Войти через Telegram
                     <img className="main__button-tgLogo" src={Logo} alt="tg logo"/>
                 </button>
-                <button className="main__button">Продолжить тестирование</button>
+                {/* <button className="main__button">
+                <Link to="/register">Продолжить тестирование</Link>
+                </button> */}
+
+                <Link to="/register" className="main__button" >
+                    <button  className="main__button">Продолжить тестирование</button>
+                </Link>
+
             </div>
             <p className="main__license">Продолжая, вы соглашаетесь с
                 <a href="#"> условиями участия в психологическом исследовании</a>
