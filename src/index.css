@@ -15,7 +15,6 @@
   width: 414px;
   min-height: 896px;
   background: url("./assets/background.png");
-  background-size: contain;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
 }
 
