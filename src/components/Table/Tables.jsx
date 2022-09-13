@@ -70,6 +70,7 @@ const Tables = () => {
     }
 
     const nextStage = () => {
+        console.log("stage:", stage)
         if (stage.id + 1 < 5) {
             setStage({
                 id: stage.id + 1,
@@ -84,9 +85,8 @@ const Tables = () => {
     const prevStage = () => {
         console.log("prev")
         console.log("stage id:", stage.id)
-        // console.log("group ins: ", groups[stage.id].group)
-        // console.log("count ins: ", groups[stage.id].count)
         console.log("number of Q ins", numberOfQuestion)
+        
         setStage({
             id: stage.id - 1,
             group: groups[stage.id - 2].group,

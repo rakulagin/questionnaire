@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from 'react-router-dom'
+import { Link, useNavigate  } from 'react-router-dom'
 import { useForm } from "react-hook-form";
 
 import './Registration.scss'
@@ -8,8 +8,14 @@ import '../../index.scss'
 const Registration = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const navigate = useNavigate()
+    // const onSubmit = (data) => {
+    //     console.log(data)
+    // }
+
     const onSubmit = (data) => {
         console.log(data)
+        navigate("/introduction")
     }
     console.log(errors)
 
@@ -110,11 +116,7 @@ const Registration = () => {
                {/*    </div>*/}
                {/*</div>*/}
 
-               <input className="button-send" type="submit" value="отправить в консоль" />
-
-               <Link to="/introduction" className="btn btn-white-blue" >Продолжить роутинг</Link>
-
-
+               <input className="btn btn-white-blue" type="submit" value="Продолжить" />
            </form>
 
 
