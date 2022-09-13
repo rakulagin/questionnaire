@@ -1,4 +1,5 @@
 import React, {useState, useEffect } from "react";
+import {useNavigate} from "react-router-dom";
 import axios from 'axios'
 
 import BigTable from "./BigTable";
@@ -6,7 +7,10 @@ import ExtraTable from "./ExtraTable";
 
 import './Tables.scss'
 
+
 const Tables = () => {
+
+    const navigate = useNavigate()
 
     const [firstAnswer, setFirstAnswer] = useState(null)
     const [secondAnswer, setSecondAnswer] = useState(null)
@@ -21,35 +25,35 @@ const Tables = () => {
     });
 
 
-    useEffect(() => {
-        axios.get('https://alexb.host/questions')
-            .then(({ data }) => {
-                setQuestions(data);
-            });
-        axios.get('https://alexb.host/groups')
-            .then(({ data }) => {
-                setGroups(data);
-            });
-        axios.get('https://alexb.host/groups')
-            .then(({ data }) => {
-                setStage(data[0]);
-            })
-    }, []);
-
     // useEffect(() => {
-    //     axios.get('https://alexb.host/testquestions')
+    //     axios.get('https://alexb.host/questions')
     //         .then(({ data }) => {
     //             setQuestions(data);
     //         });
-    //     axios.get('https://alexb.host/testgroups')
+    //     axios.get('https://alexb.host/groups')
     //         .then(({ data }) => {
     //             setGroups(data);
     //         });
-    //     axios.get('https://alexb.host/testgroups')
+    //     axios.get('https://alexb.host/groups')
     //         .then(({ data }) => {
     //             setStage(data[0]);
     //         })
     // }, []);
+
+    useEffect(() => {
+        axios.get('https://alexb.host/testquestions')
+            .then(({ data }) => {
+                setQuestions(data);
+            });
+        axios.get('https://alexb.host/testgroups')
+            .then(({ data }) => {
+                setGroups(data);
+            });
+        axios.get('https://alexb.host/testgroups')
+            .then(({ data }) => {
+                setStage(data[0]);
+            })
+    }, []);
 
     const nextQuestion = (numberOfQuestion) => {
         if (numberOfQuestion + 1 === stage.count) {
@@ -63,7 +67,7 @@ const Tables = () => {
     const prevQuestion = () => {
         if (numberOfQuestion === 0) {
             prevStage()
-            setNumberOfQuestion(groups[stage.id-2].count-1)
+
         } else {
             setNumberOfQuestion(numberOfQuestion-1)
         }
@@ -83,23 +87,26 @@ const Tables = () => {
     };
 
     const prevStage = () => {
-        console.log("prev")
-        console.log("stage id:", stage.id)
-        console.log("number of Q ins", numberOfQuestion)
-        
-        setStage({
-            id: stage.id - 1,
-            group: groups[stage.id - 2].group,
-            count: groups[stage.id - 2].count
-        })
+        if (stage.id == 1) {
+            console.log("need prev page")
+            prevPage()
+        } else {
+            setNumberOfQuestion(groups[stage.id-2].count-1)
+            setStage({
+                id: stage.id - 1,
+                group: groups[stage.id - 2].group,
+                count: groups[stage.id - 2].count
+            })
+        }
     }
 
-    // console.log("---------")
-    // console.log("stage:", stage)
-    // console.log("stage.group:", stage.group)
-    // console.log("number of Q:", numberOfQuestion)
-    // console.log("---------")
-    
+    const prevPage = () => {
+        navigate("/instruction")
+    }
+
+    const nextPage = () => {
+        console.log("next page")
+    }
 
 
     return (
