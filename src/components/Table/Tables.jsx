@@ -58,7 +58,6 @@ const Tables = () => {
     const nextQuestion = (numberOfQuestion) => {
         if (numberOfQuestion + 1 === stage.count) {
             nextStage()
-            setNumberOfQuestion(0)
         } else {
             setNumberOfQuestion(numberOfQuestion+1)
         }
@@ -67,28 +66,26 @@ const Tables = () => {
     const prevQuestion = () => {
         if (numberOfQuestion === 0) {
             prevStage()
-
         } else {
             setNumberOfQuestion(numberOfQuestion-1)
         }
     }
 
     const nextStage = () => {
-        console.log("stage:", stage)
         if (stage.id + 1 < 5) {
+            setNumberOfQuestion(0)
             setStage({
                 id: stage.id + 1,
                 group: groups[stage.id].group,
                 count: groups[stage.id].count
             });
         } else {
-            setStage({ id: 5, group: "Тестирование окончено", count: 0 });
+            nextPage()
         }
     };
 
     const prevStage = () => {
         if (stage.id == 1) {
-            console.log("need prev page")
             prevPage()
         } else {
             setNumberOfQuestion(groups[stage.id-2].count-1)
@@ -105,7 +102,7 @@ const Tables = () => {
     }
 
     const nextPage = () => {
-        console.log("next page")
+        navigate("/final")
     }
 
 
