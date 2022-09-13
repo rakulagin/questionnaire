@@ -18,8 +18,7 @@ const Instruction = () => {
                 <img src={instruction} alt=""/>
             </div>
 
-
-            <Link to="/tables">next</Link>
+            <Link to="/tables" className="btn btn-white-black" >Понятно</Link>
         </div>
     )
 }

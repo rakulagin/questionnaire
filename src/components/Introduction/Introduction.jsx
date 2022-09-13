@@ -49,9 +49,8 @@ const Introduction = () => {
                 }
             </div>
             <p className="intro__text">Ваши ответы не увидят другие участники исследования. Пожалуйста, выбирайте честные, а не «правильные» ответы</p>
-            <div className="intro__item">
-            </div>
-            <Link to="/instruction">next</Link>
+
+            <Link to="/instruction" className="btn btn-blue" >Приступить</Link>
         </div>
     )
 }

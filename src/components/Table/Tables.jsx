@@ -148,8 +148,8 @@ const Tables = () => {
                         </div>
                     </div>
                 <div className="buttons">
-                    <button className="button button-prev" onClick={ prevQuestion }>Назад</button>
-                    <button className="button button-next" onClick={ () =>  nextQuestion(numberOfQuestion) }>Далее</button>
+                    <button className="btn btn-table btn-white-blue" onClick={ prevQuestion }>Назад</button>
+                    <button className="btn btn-table btn-blue" onClick={ () =>  nextQuestion(numberOfQuestion)}>Назад</button>
                 </div>
             </div>
         </div>

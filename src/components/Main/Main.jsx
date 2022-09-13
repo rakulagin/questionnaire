@@ -15,9 +15,8 @@ const Main = () => {
                     Войти через Telegram
                     <img className="main__button-tgLogo" src={Logo} alt="tg logo"/>
                 </button>
-                <Link to="/register" className="main__button" >
-                    <button  className="main__button">Продолжить тестирование</button>
-                </Link>
+
+                <Link to="/register" className="btn btn-white-black" >Продолжить тестирование</Link>
 
             </div>
             <p className="main__license">Продолжая, вы соглашаетесь с

@@ -153,27 +153,5 @@
   display: flex;
   justify-content: space-between;
   margin-top: 60px;
-}
-
-.button {
-  width: 160px;
-  height: 71px;
-  border-radius: 12px;
-  //font-family: SF Pro Text;
-  font-size: 17px;
-  font-weight: 400;
-  line-height: 24px;
-  letter-spacing: -0.4px;
-}
-
-.button-prev {
-  background-color: #FFFFFF;
-  color: #006BE0;
-  border: 1px solid #006BE0;
-}
-
-.button-next {
-  background-color: #006BE0;
-  color: #FFFFFF;
-  border: 1px solid #006BE0;
+  gap: 16px;
 }
