@@ -37,4 +37,8 @@
   margin-top: 24px;
 }
 
+form div:last-of-type {
+  margin-bottom: 80px;
+}
+
 /*# sourceMappingURL=Registration.css.map */
