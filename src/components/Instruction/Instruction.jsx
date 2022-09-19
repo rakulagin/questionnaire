@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link} from "react-router-dom"
 
+import Tooltip from "./Tooltip"
+
 import instruction from "../../assets/instruction-1.png"
 import tooltip1 from "../../assets/tooltip-1.svg"
 import tooltip2 from "../../assets/tooltip-2.svg"
@@ -47,19 +49,25 @@ const Instruction = () => {
 
             <div className="images">
 
-                {visible1 && (
-                    <div className="tooltip tooltip-1">
-                        <img className="tooltip__img" src={tooltip1} alt="подсказка-1"/>
-                        <p>Сформулируйте ваше мнение, на сколько хорошие отношения являются результатом совместной работы или это больше везение найти подходящего человека?</p>
-                    </div>
-                )}
+                {visible1 &&
+                    <Tooltip
+                        subclass = {"tooltip-1"}
+                        src = {tooltip1}
+                        alt = {"подсказка 1}"}
+                    >
+                            Сформулируйте ваше мнение, на сколько хорошие отношения являются результатом совместной работы или это больше везение найти подходящего человека?
+                    </Tooltip>
+                }
 
-                {visible2 && (
-                    <div className="tooltip tooltip-2">
-                        <img className="tooltip__img" src={tooltip2} alt="подсказка-2"/>
-                        <p>Например, если вы считаете, что вклад совместной работы в хорошие отношения на 4 из 5, и одновременно везения найти подходящего партнера на 3 из 5, то поставьте отметку на пересечении 4 по «результат совместной работы» и 3 по «везение найти подходящего человека».</p>
-                    </div>
-                )}
+                {visible2 &&
+                    <Tooltip
+                        subclass={"tooltip-2"}
+                        src = {tooltip2}
+                        alt = {"подсказка 2"}
+                    >
+                        Например, если вы считаете, что вклад совместной работы в хорошие отношения на 4 из 5, и одновременно везения найти подходящего партнера на 3 из 5, то поставьте отметку на пересечении 4 по «результат совместной работы» и 3 по «везение найти подходящего человека».
+                    </Tooltip>
+                }
 
                 <img className="pointer" src={pointer} alt="клик сюда"/>
 
