@@ -12,18 +12,36 @@ const Instruction = () => {
 
     const [visible1, setVisible1] = useState(true)
     const [visible2, setVisible2] = useState(false)
+    const [flag, setFlag] = useState(false)
 
-    const showFirst = () => {
-        if(visible1 && !visible2) {
-            setVisible2(true)
+    const clickFirst = () => {
+        console.log("clickFirst")
+        if (flag) { visible2 ? setVisible2(false) : setVisible1(true) }
+    }
+
+    const clickSecond = () => {
+        console.log("clickSecond")
+        if (flag) { visible1 ? setVisible1(false) : setVisible2(true) }
+    }
+
+    const clickSomewhere = () => {
+        console.log("someWhere")
+        if (!flag) {
+            if (!visible2) {
+                setVisible1(false)
+                setVisible2(true)
+            } else {
+                setVisible2(false)
+                setFlag(true)
+            }
         } else {
-            setVisible1(false)
-            setVisible2(false)
+            if (visible1) { setVisible1(false) }
+            if (visible2) { setVisible2(false) }
         }
     }
 
     return (
-        <div className=" instruction mockup__wrapper" onClick={showFirst}>
+        <div className=" instruction mockup__wrapper" onClick={clickSomewhere}>
             <h1 className="instruction__title">Пример заполнения анкеты</h1>
             <p className="instruction__text">Разберём как заполнять анкету на примере одного из вопросов</p>
 
@@ -31,24 +49,24 @@ const Instruction = () => {
 
                 {visible1 && (
                     <div className="tooltip tooltip-1">
-                        <img className="tooltip__img" src={tooltip1} alt=""/>
+                        <img className="tooltip__img" src={tooltip1} alt="подсказка-1"/>
                         <p>Сформулируйте ваше мнение, на сколько хорошие отношения являются результатом совместной работы или это больше везение найти подходящего человека?</p>
                     </div>
                 )}
 
                 {visible2 && (
                     <div className="tooltip tooltip-2">
-                        <img className="tooltip__img" src={tooltip2} alt=""/>
+                        <img className="tooltip__img" src={tooltip2} alt="подсказка-2"/>
                         <p>Например, если вы считаете, что вклад совместной работы в хорошие отношения на 4 из 5, и одновременно везения найти подходящего партнера на 3 из 5, то поставьте отметку на пересечении 4 по «результат совместной работы» и 3 по «везение найти подходящего человека».</p>
                     </div>
                 )}
 
-                <img className="pointer" src={pointer} alt=""/>
+                <img className="pointer" src={pointer} alt="клик сюда"/>
 
 
 
-                <img src={instruction} alt=""/>
-                <img src={instruction} alt=""/>
+                <img src={instruction} alt="" onClick={clickFirst}/>
+                <img src={instruction} alt="" onClick={clickSecond}/>
             </div>
 
             <Link to="/tables" className="btn btn-white-black" >Понятно</Link>
