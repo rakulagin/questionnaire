@@ -17,10 +17,21 @@
   margin-bottom: 24px;
 }
 .theme__bar-progress {
-  width: 100px;
+  width: 20%;
   height: 100%;
-  background-color: #91009E;
   border-radius: 50px 0 0 50px;
+}
+.theme__bar-progress-green {
+  background-color: #008960;
+}
+.theme__bar-progress-red {
+  background-color: #DE2424;
+}
+.theme__bar-progress-blue {
+  background-color: #0053B5;
+}
+.theme__bar-progress-purple {
+  background-color: #91009E;
 }
 
 .theme__question {

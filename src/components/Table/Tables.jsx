@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 
 import BigTable from "./BigTable";
@@ -23,6 +23,8 @@ const Tables = () => {
         group: "",
         count: 1
     });
+
+    const colors = ["green", "red", "blue", "purple"]
 
 
     // useEffect(() => {
@@ -56,6 +58,9 @@ const Tables = () => {
     }, []);
 
     const nextQuestion = (numberOfQuestion) => {
+        setFirstAnswer(null)
+        setSecondAnswer(null)
+        setThirdAnswer(null)
         if (numberOfQuestion + 1 === stage.count) {
             nextStage()
         } else {
@@ -105,13 +110,12 @@ const Tables = () => {
         navigate("/final")
     }
 
-
     return (
         <div className="mockup">
             <div className="mockup__wrapper">
                 <p className="theme">{stage.group}</p>
                 <div className="theme__bar">
-                    <div className="theme__bar-progress"></div>
+                    <div className={`theme__bar-progress theme__bar-progress-${colors[stage.id-1]}`}></div>
                 </div>
                 <h2 className="theme__question">
                     {questions && questions.filter((el) => el.group_id === stage.id)[numberOfQuestion].question}
@@ -153,7 +157,7 @@ const Tables = () => {
                     </div>
                 <div className="buttons">
                     <button className="btn btn-table btn-white-blue" onClick={ prevQuestion }>Назад</button>
-                    <button className="btn btn-table btn-blue" onClick={ () =>  nextQuestion(numberOfQuestion)}>Назад</button>
+                    <button className="btn btn-table btn-blue" onClick={ () =>  nextQuestion(numberOfQuestion)}>Далее</button>
                 </div>
             </div>
         </div>
