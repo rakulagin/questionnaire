@@ -17,7 +17,7 @@ const BigTable = ({state, setState}) => {
                             [...Array(5)].map((el, index) =>
                                 <div key={index}
                                      onClick = {e => setState(e.target.getAttribute('data-cords'))}
-                                     className={state == index+1? "col active" : "col"}
+                                     className={state === `${index + 1}:${5-i}`? "col active" : "col"}
                                      data-cords={`${index + 1}:${5-i}`}
                                 >&nbsp;
                                 </div>)

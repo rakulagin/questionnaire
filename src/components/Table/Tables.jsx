@@ -26,6 +26,8 @@ const Tables = () => {
 
     const colors = ["green", "red", "blue", "purple"]
 
+    const barWidth = `${(numberOfQuestion+1) / stage.count * 100}%`
+
 
     // useEffect(() => {
     //     axios.get('https://alexb.host/questions')
@@ -115,7 +117,8 @@ const Tables = () => {
             <div className="mockup__wrapper">
                 <p className="theme">{stage.group}</p>
                 <div className="theme__bar">
-                    <div className={`theme__bar-progress theme__bar-progress-${colors[stage.id-1]}`}></div>
+                    <div className={`theme__bar-progress theme__bar-progress-${colors[stage.id-1]}`}
+                         style={{width: barWidth}}></div>
                 </div>
                 <h2 className="theme__question">
                     {questions && questions.filter((el) => el.group_id === stage.id)[numberOfQuestion].question}

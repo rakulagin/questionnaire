@@ -15,11 +15,10 @@
   background-color: #C4C4C4;
   border-radius: 50px;
   margin-bottom: 24px;
+  overflow: hidden;
 }
 .theme__bar-progress {
-  width: 20%;
   height: 100%;
-  border-radius: 50px 0 0 50px;
 }
 .theme__bar-progress-green {
   background-color: #008960;
@@ -84,7 +83,7 @@
 }
 
 .col:hover {
-  background: #008960;
+  background: rgba(0, 137, 96, 0.49);
   cursor: pointer;
 }
 
