@@ -59,6 +59,11 @@ body {
     height: 71px;
   }
 
+  &-disabled {
+    background-color: #999999;
+    color: #FFFFFF;
+  }
+
   &-blue {
     background-color: #006BE0;
     color: #FFFFFF;

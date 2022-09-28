@@ -4,6 +4,7 @@ import axios from 'axios'
 
 import BigTable from "./BigTable";
 import ExtraTable from "./ExtraTable";
+import ProgressBar from "../ProgressBar/ProgressBar";
 
 import './Tables.scss'
 
@@ -23,10 +24,6 @@ const Tables = () => {
         group: "",
         count: 1
     });
-
-    const colors = ["green", "red", "blue", "purple"]
-
-    const barWidth = `${(numberOfQuestion+1) / stage.count * 100}%`
 
 
     // useEffect(() => {
@@ -104,22 +101,29 @@ const Tables = () => {
         }
     }
 
-    const prevPage = () => {
-        navigate("/instruction")
-    }
-
     const nextPage = () => {
         navigate("/final")
+    }
+
+    const prevPage = () => {
+        navigate("/instruction")
     }
 
     return (
         <div className="mockup">
             <div className="mockup__wrapper">
-                <p className="theme">{stage.group}</p>
-                <div className="theme__bar">
-                    <div className={`theme__bar-progress theme__bar-progress-${colors[stage.id-1]}`}
-                         style={{width: barWidth}}></div>
-                </div>
+
+                {/*<p className="theme">{stage.group}</p>*/}
+                {/*<div className="theme__bar">*/}
+                {/*    <div className={`theme__bar-progress theme__bar-progress-${colors[stage.id-1]}`}*/}
+                {/*         style={{width: barWidth}}></div>*/}
+                {/*</div>*/}
+
+                <ProgressBar
+                    stage={stage}
+                    numberOfQuestion={numberOfQuestion}
+                />
+
                 <h2 className="theme__question">
                     {questions && questions.filter((el) => el.group_id === stage.id)[numberOfQuestion].question}
                 </h2>

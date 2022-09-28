@@ -48,6 +48,10 @@
 .btn-table {
   height: 71px;
 }
+.btn-disabled {
+  background-color: #999999;
+  color: #FFFFFF;
+}
 .btn-blue {
   background-color: #006BE0;
   color: #FFFFFF;
