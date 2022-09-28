@@ -58,15 +58,13 @@ const Tables = () => {
     }, []);
 
     const nextQuestion = () => {
-        if (btnEnabled) {
-            setFirstAnswer(null)
-            setSecondAnswer(null)
-            setThirdAnswer(null)
-            if (numberOfQuestion + 1 === stage.count) {
-                nextStage()
-            } else {
-                setNumberOfQuestion(numberOfQuestion+1)
-            }
+        setFirstAnswer(null)
+        setSecondAnswer(null)
+        setThirdAnswer(null)
+        if (numberOfQuestion + 1 === stage.count) {
+            nextStage()
+        } else {
+            setNumberOfQuestion(numberOfQuestion+1)
         }
     }
 
@@ -112,7 +110,8 @@ const Tables = () => {
         navigate("/instruction")
     }
 
-    const btnEnabled = firstAnswer && secondAnswer && thirdAnswer
+    const btnEnabled = (firstAnswer && secondAnswer && thirdAnswer) ? true : false
+
 
     // const styleEnabled = "btn btn-table btn-blue"
 
@@ -173,6 +172,7 @@ const Tables = () => {
                     <button className="btn btn-table btn-white-blue" onClick={ prevQuestion }>Назад</button>
                     <button
                         // className="btn btn-table btn-blue"
+                        disabled={!btnEnabled}
                         className={
                             (btnEnabled) ?
                                 (
