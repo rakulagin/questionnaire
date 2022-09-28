@@ -20,9 +20,8 @@ const Registration = () => {
     const [userInfo, setUserInfo] = useState()
 
     const onSubmit = (data) => {
-        console.log(data)
         setUserInfo(data)
-        navigate("/introduction")
+        // navigate("/introduction")
     }
 
     console.log("errors :", errors)

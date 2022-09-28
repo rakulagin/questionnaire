@@ -25,7 +25,7 @@ const Tables = () => {
         count: 1
     });
 
-
+    //рабочий сервер
     // useEffect(() => {
     //     axios.get('https://alexb.host/questions')
     //         .then(({ data }) => {
@@ -41,6 +41,7 @@ const Tables = () => {
     //         })
     // }, []);
 
+    //тестовый сервер
     useEffect(() => {
         axios.get('https://alexb.host/testquestions')
             .then(({ data }) => {
@@ -56,14 +57,16 @@ const Tables = () => {
             })
     }, []);
 
-    const nextQuestion = (numberOfQuestion) => {
-        setFirstAnswer(null)
-        setSecondAnswer(null)
-        setThirdAnswer(null)
-        if (numberOfQuestion + 1 === stage.count) {
-            nextStage()
-        } else {
-            setNumberOfQuestion(numberOfQuestion+1)
+    const nextQuestion = () => {
+        if (btnEnabled) {
+            setFirstAnswer(null)
+            setSecondAnswer(null)
+            setThirdAnswer(null)
+            if (numberOfQuestion + 1 === stage.count) {
+                nextStage()
+            } else {
+                setNumberOfQuestion(numberOfQuestion+1)
+            }
         }
     }
 
@@ -108,6 +111,10 @@ const Tables = () => {
     const prevPage = () => {
         navigate("/instruction")
     }
+
+    const btnEnabled = firstAnswer && secondAnswer && thirdAnswer
+
+    // const styleEnabled = "btn btn-table btn-blue"
 
     return (
         <div className="mockup">
@@ -164,7 +171,20 @@ const Tables = () => {
                     </div>
                 <div className="buttons">
                     <button className="btn btn-table btn-white-blue" onClick={ prevQuestion }>Назад</button>
-                    <button className="btn btn-table btn-blue" onClick={ () =>  nextQuestion(numberOfQuestion)}>Далее</button>
+                    <button
+                        // className="btn btn-table btn-blue"
+                        className={
+                            (btnEnabled) ?
+                                (
+                                    "btn btn-table btn-blue"
+                                ) : (
+                                    "btn btn-table btn-disabled"
+                                )
+                        }
+                        onClick={ nextQuestion }
+                    >
+                        Далее
+                    </button>
                 </div>
             </div>
         </div>
