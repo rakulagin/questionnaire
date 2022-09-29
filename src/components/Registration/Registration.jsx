@@ -24,12 +24,11 @@ const Registration = () => {
 
 
     const onSubmit = (data) => {
-        setUserInfo(data)
         navigate("/introduction")
-    }
 
-    console.log("userInfo:", userInfo)
-    console.log("----------")
+        const addUser = {...userInfo, user: data }
+        setUserInfo(addUser)
+    }
 
    return (
        <div className="mockup mockup__wrapper">
@@ -173,20 +172,21 @@ const Registration = () => {
                {/*    {errors.weight && <p>{errors.weight.message}</p>}*/}
                {/*</div>*/}
 
-               {/*<div className="input__block">*/}
-               {/*    <h2 className="input__question">Какое у вас образование?</h2>*/}
-               {/*    <select*/}
-               {/*        className="input__field input__answer"*/}
-               {/*        >*/}
-               {/*        <option value="1" >Начальное</option>*/}
-               {/*        <option value="2">Среднее</option>*/}
-               {/*        <option value="3">Средне-специальное</option>*/}
-               {/*        <option value="4">Незаконченное высшее</option>*/}
-               {/*        <option value="5">Высшее</option>*/}
-               {/*        <option value="6">Несколько высших</option>*/}
-               {/*        <option value="7">Ученая степень</option>*/}
-               {/*    </select>*/}
-               {/*</div>*/}
+               <div className="input__block">
+                   <h2 className="input__question">Какое у вас образование?</h2>
+                   <select
+                       className="input__field input__answer"
+                       {...register("education", {required: true})}
+                       >
+                       <option value="1" >Начальное</option>
+                       <option value="2">Среднее</option>
+                       <option value="3">Средне-специальное</option>
+                       <option value="4">Незаконченное высшее</option>
+                       <option value="5">Высшее</option>
+                       <option value="6">Несколько высших</option>
+                       <option value="7">Ученая степень</option>
+                   </select>
+               </div>
 
                <input
                    // className="btn btn-white-blue"

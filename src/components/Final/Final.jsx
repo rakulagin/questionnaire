@@ -14,7 +14,10 @@ const Final = () => {
                 <p className="final__text">Скоро вам будут отправлены имена Телеграм трех участников исследования для последующего видеозвонка</p>
             </main>
             <footer>
-                <p className="final__footer">По всем интересующим вопросам вы можете написать нам в Телеграм @korovinVlad</p>
+                <p className="final__footer">
+                    По всем интересующим вопросам вы можете написать нам в Телеграм &nbsp;
+                    <a className="contact-link" href="https://t.me/ramzimamzi">@korovinVlad</a>
+                </p>
             </footer>
         </div>
     )

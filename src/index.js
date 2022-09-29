@@ -8,7 +8,21 @@ import './index.scss';
 import App from './App';
 
 function Main() {
-    const [userInfo, setUserInfo] = useState()
+    const [userInfo, setUserInfo] = useState(
+        {
+            user: {
+                name: "",
+                gender: "",
+                year: "",
+                relationship: "",
+                city: "",
+                height: "",
+                weight: "",
+                education: ""
+            },
+            answers: []
+        }
+    )
 
     return (
         <DataContext.Provider value={{userInfo, setUserInfo}}>

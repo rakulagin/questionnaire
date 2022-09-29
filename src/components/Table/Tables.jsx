@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from "react";
+import React, {useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 
@@ -6,10 +6,14 @@ import BigTable from "./BigTable";
 import ExtraTable from "./ExtraTable";
 import ProgressBar from "../ProgressBar/ProgressBar";
 
+import DataContext from "../../context";
+
 import './Tables.scss'
 
 
 const Tables = () => {
+
+    const {userInfo, setUserInfo} = useContext(DataContext)
 
     const navigate = useNavigate()
 
@@ -58,6 +62,7 @@ const Tables = () => {
     }, []);
 
     const nextQuestion = () => {
+        saveAnswer(firstAnswer, secondAnswer, thirdAnswer)
         setFirstAnswer(null)
         setSecondAnswer(null)
         setThirdAnswer(null)
@@ -112,8 +117,29 @@ const Tables = () => {
 
     const btnEnabled = (firstAnswer && secondAnswer && thirdAnswer) ? true : false
 
+    const saveAnswer = (firstAnswer, secondAnswer, thirdAnswer) => {
+        // номер вопроса
+        // вопрос
+        // ответ 1
+        // ответ 2
+        // ответ 3
 
-    // const styleEnabled = "btn btn-table btn-blue"
+        const newObj = {
+            question: "bla-bla-bla",
+            firstAnswer: firstAnswer,
+            secondAnswer: secondAnswer,
+            thirdAnswer: thirdAnswer
+        }
+
+        const tempObj = {
+            user: userInfo.user,
+            answers: [...userInfo.answers, newObj]
+        }
+        setUserInfo(tempObj)
+    }
+
+    // console.log("outside", userInfo)
+
 
     return (
         <div className="mockup">
