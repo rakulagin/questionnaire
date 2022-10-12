@@ -137,7 +137,7 @@ const Tables = () => {
     }
 
     const prevPage = () => {
-        navigate("/instruction")
+        navigate("/introduction")
     }
 
 
