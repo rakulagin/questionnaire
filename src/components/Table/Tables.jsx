@@ -67,6 +67,8 @@ const Tables = () => {
 
 
 
+    // ВОПРОСЫ
+
     const nextQuestion = () => {
         saveAnswer(firstAnswer, secondAnswer, thirdAnswer)
         setQuestionId(questionId+1)
@@ -82,12 +84,31 @@ const Tables = () => {
 
     const prevQuestion = () => {
 
+        // заменяем массив с ответами новым, но без последнего элемента
+        // const newAnswers = userInfo.answers.slice(0,-1)
+        // const newUserInfo = {
+        //     user: userInfo.user,
+        //     answers: newAnswers
+        // }
+        // setUserInfo(newUserInfo)
+        setQuestionId(questionId-1)
+
+        // ставим ответы туда, где они были
+        setFirstAnswer(userInfo?.answers[questionId-1]?.firstAnswer)
+        setSecondAnswer(userInfo?.answers[questionId-1]?.secondAnswer)
+        setThirdAnswer(userInfo?.answers[questionId-1]?.thirdAnswer)
+
+
+        // переворачиваем стадию назад или понижаем номер вопроса
         if (numberOfQuestion === 0) {
             prevStage()
         } else {
             setNumberOfQuestion(numberOfQuestion-1)
         }
     }
+
+
+    // СТАДИИ
 
     const nextStage = () => {
         if (stage.id + 1 < 5) {
@@ -116,6 +137,8 @@ const Tables = () => {
         }
     }
 
+
+    // СТРАНИЦЫ
     const nextPage = () => {
         navigate("/final")
     }
@@ -127,7 +150,7 @@ const Tables = () => {
 
 
 
-    
+
 
     const btnEnabled = (firstAnswer && secondAnswer && thirdAnswer) ? true : false
 
@@ -146,9 +169,14 @@ const Tables = () => {
         setUserInfo(tempObj)
     }
 
-    console.log("outside", userInfo)
+    console.log("outside userinfo", userInfo)
     console.log("outside id: ", questionId)
+    console.log("userinfo.answers:", userInfo.answers)
+    console.log("firstAnswer in userinfo: ", userInfo?.answers[questionId-1]?.firstAnswer)
+    console.log("firstAnswer: " ,firstAnswer)
     console.log("----------")
+
+
 
 
     return (
