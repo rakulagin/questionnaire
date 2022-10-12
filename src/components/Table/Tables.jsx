@@ -72,9 +72,9 @@ const Tables = () => {
     const nextQuestion = () => {
         saveAnswer(firstAnswer, secondAnswer, thirdAnswer)
         setQuestionId(questionId+1)
-        setFirstAnswer(null)
-        setSecondAnswer(null)
-        setThirdAnswer(null)
+        setFirstAnswer(userInfo?.answers[questionId+1]?.firstAnswer)
+        setSecondAnswer(userInfo?.answers[questionId+1]?.secondAnswer)
+        setThirdAnswer(userInfo?.answers[questionId+1]?.thirdAnswer)
         if (numberOfQuestion + 1 === stage.count) {
             nextStage()
         } else {
@@ -84,13 +84,6 @@ const Tables = () => {
 
     const prevQuestion = () => {
 
-        // заменяем массив с ответами новым, но без последнего элемента
-        // const newAnswers = userInfo.answers.slice(0,-1)
-        // const newUserInfo = {
-        //     user: userInfo.user,
-        //     answers: newAnswers
-        // }
-        // setUserInfo(newUserInfo)
         setQuestionId(questionId-1)
 
         // ставим ответы туда, где они были
@@ -154,7 +147,10 @@ const Tables = () => {
 
     const btnEnabled = (firstAnswer && secondAnswer && thirdAnswer) ? true : false
 
+
+
     const saveAnswer = (firstAnswer, secondAnswer, thirdAnswer) => {
+        // пакуем ответы во временный объект и либо добавляем в конец массива либо заменяем текущий элемент
         const newObj = {
             index: questionId,
             question: questions.filter((el) => el.group_id === stage.id)[numberOfQuestion].question,
@@ -162,19 +158,27 @@ const Tables = () => {
             secondAnswer: secondAnswer,
             thirdAnswer: thirdAnswer
         }
-        const tempObj = {
-            user: userInfo.user,
-            answers: [...userInfo.answers, newObj]
+        if (userInfo.answers.length > questionId) {
+            // заменяем текущий
+            const tempArr = userInfo.answers
+            tempArr[questionId] = newObj
+
+            const tempObj = {
+                user: userInfo.user,
+                answers: tempArr
+            }
+            setUserInfo(tempObj)
+        } else {
+            // делаем новый
+            const tempObj = {
+                user: userInfo.user,
+                answers: [...userInfo.answers, newObj]
+            }
+            setUserInfo(tempObj)
         }
-        setUserInfo(tempObj)
     }
 
-    console.log("outside userinfo", userInfo)
-    console.log("outside id: ", questionId)
-    console.log("userinfo.answers:", userInfo.answers)
-    console.log("firstAnswer in userinfo: ", userInfo?.answers[questionId-1]?.firstAnswer)
-    console.log("firstAnswer: " ,firstAnswer)
-    console.log("----------")
+
 
 
 
