@@ -23,6 +23,7 @@ const Tables = () => {
     const [questions, setQuestions] = useState(null)
     const [groups, setGroups] = useState(null)
     const [numberOfQuestion, setNumberOfQuestion] = useState(0)
+    const [questionId, setQuestionId] = useState(0)
     const [stage, setStage] = useState({
         id: 1,
         group: "",
@@ -61,8 +62,14 @@ const Tables = () => {
             })
     }, []);
 
+
+
+
+
+
     const nextQuestion = () => {
         saveAnswer(firstAnswer, secondAnswer, thirdAnswer)
+        setQuestionId(questionId+1)
         setFirstAnswer(null)
         setSecondAnswer(null)
         setThirdAnswer(null)
@@ -74,6 +81,7 @@ const Tables = () => {
     }
 
     const prevQuestion = () => {
+
         if (numberOfQuestion === 0) {
             prevStage()
         } else {
@@ -91,6 +99,7 @@ const Tables = () => {
             });
         } else {
             nextPage()
+            console.log(userInfo)
         }
     };
 
@@ -115,22 +124,21 @@ const Tables = () => {
         navigate("/instruction")
     }
 
+
+
+
+    
+
     const btnEnabled = (firstAnswer && secondAnswer && thirdAnswer) ? true : false
 
     const saveAnswer = (firstAnswer, secondAnswer, thirdAnswer) => {
-        // номер вопроса
-        // вопрос
-        // ответ 1
-        // ответ 2
-        // ответ 3
-
         const newObj = {
-            question: "bla-bla-bla",
+            index: questionId,
+            question: questions.filter((el) => el.group_id === stage.id)[numberOfQuestion].question,
             firstAnswer: firstAnswer,
             secondAnswer: secondAnswer,
             thirdAnswer: thirdAnswer
         }
-
         const tempObj = {
             user: userInfo.user,
             answers: [...userInfo.answers, newObj]
@@ -138,7 +146,9 @@ const Tables = () => {
         setUserInfo(tempObj)
     }
 
-    // console.log("outside", userInfo)
+    console.log("outside", userInfo)
+    console.log("outside id: ", questionId)
+    console.log("----------")
 
 
     return (
