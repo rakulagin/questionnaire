@@ -219,20 +219,16 @@
 }
 
 * {
+  font-family: SF Pro Display;
   margin: 0;
   padding: 0;
   list-style: none;
   outline: none;
-  //font-family: roboto, -apple-system, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   user-select: none;
 }
 
-
-body {
-
-}
 
 .background {
   position: absolute;
@@ -242,7 +238,6 @@ body {
   width: 414px;
   min-height: 896px;
   background: url("./assets/background.png");
-  //background-size: contain;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
 }
 
@@ -268,7 +263,7 @@ body {
   user-select: none;
   cursor: default;
 
-  font-family: SF Pro Text;
+  //font-family: SF Pro Text;
   font-size: 17px;
   font-weight: 400;
   line-height: 24px;

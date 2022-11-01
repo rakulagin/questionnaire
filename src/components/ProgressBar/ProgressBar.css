@@ -9,7 +9,6 @@
   margin-right: 8px;
 }
 .stage__group {
-  font-family: SF Pro Text;
   font-size: 15px;
   font-weight: 400;
   line-height: 40px;
@@ -38,6 +37,22 @@
   background-color: #0053B5;
 }
 .bar-progress-purple {
+  background-color: #91009E;
+}
+
+.green {
+  background-color: #008960;
+}
+
+.red {
+  background-color: #DE2424;
+}
+
+.blue {
+  background-color: #0053B5;
+}
+
+.purple {
   background-color: #91009E;
 }
 

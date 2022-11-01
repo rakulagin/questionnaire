@@ -41,7 +41,7 @@ const Introduction = () => {
                     items.map((item, index) =>
                         <div key={index}
                              className="intro__item">
-                            <img className="intro__item__image" src={item.img} alt="12"/>
+                            <img className="intro__item__image" src={item.img} alt="icon"/>
                             <h3 className="intro__item__title">{item.title}</h3>
                             <p className="intro__item__text">{item.text}</p>
                         </div>

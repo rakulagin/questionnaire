@@ -129,6 +129,7 @@
 }
 
 * {
+  font-family: SF Pro Display;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -168,7 +169,6 @@
   outline: none;
   user-select: none;
   cursor: default;
-  font-family: SF Pro Text;
   font-size: 17px;
   font-weight: 400;
   line-height: 24px;

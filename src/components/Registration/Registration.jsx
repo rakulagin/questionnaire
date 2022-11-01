@@ -22,12 +22,10 @@ const Registration = () => {
     const navigate = useNavigate()
 
 
-
     const onSubmit = (data) => {
-        navigate("/introduction")
-
         const addUser = {...userInfo, user: data }
         setUserInfo(addUser)
+        navigate("/introduction")
     }
 
    return (

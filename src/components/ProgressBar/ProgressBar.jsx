@@ -22,7 +22,7 @@ const ProgressBar = ({stage, numberOfQuestion}) => {
             </div>
 
             <div className="bar">
-                <div className={`bar-progress bar-progress-${colors[stage.id-1]}`}
+                <div className={`bar-progress ${colors[stage.id-1]}`}
                      style={{width: barWidth}}></div>
             </div>
         </>

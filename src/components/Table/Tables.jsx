@@ -30,7 +30,9 @@ const Tables = () => {
         count: 1
     });
 
-    //рабочий сервер
+    const colors = ["green", "red", "blue", "purple"]
+
+    //рабочий сервер переделать как тестовый!!!
     // useEffect(() => {
     //     axios.get('https://alexb.host/questions')
     //         .then(({ data }) => {
