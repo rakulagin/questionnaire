@@ -55,11 +55,8 @@ const Tables = () => {
         axios.get('https://alexb.host/testgroups')
             .then(({ data }) => {
                 setGroups(data);
+                setStage(data[0])
             });
-        axios.get('https://alexb.host/testgroups')
-            .then(({ data }) => {
-                setStage(data[0]);
-            })
     }, []);
 
 
@@ -139,9 +136,6 @@ const Tables = () => {
     const prevPage = () => {
         navigate("/introduction")
     }
-
-
-
 
 
 

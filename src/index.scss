@@ -214,6 +214,9 @@
   font-style: italic;
 }
 
+.to-main {
+  height: 67px;
+}
 
 * {
   margin: 0;
@@ -244,8 +247,6 @@ body {
 }
 
 .mockup {
-  margin-top: 67px;
-  //padding-top: 32px;
   background-color: #fff;
   border-radius: 12px 12px 0 0;
   min-height: calc(896px - 67px);
