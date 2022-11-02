@@ -1,11 +1,8 @@
 @font-face {
   font-family: 'SF Pro Display';
-  src: url('./assets/fonts/SFPro/SFProDisplay-Medium.eot');
   src: local('SF Pro Display Medium'), local('SFProDisplay-Medium'),
-  url('./assets/fonts/SFPro/SFProDisplay-Medium.eot?#iefix') format('embedded-opentype'),
   url('./assets/fonts/SFPro/SFProDisplay-Medium.woff2') format('woff2'),
-  url('./assets/fonts/SFPro/SFProDisplay-Medium.woff') format('woff'),
-  url('./assets/fonts/SFPro/SFProDisplay-Medium.ttf') format('truetype');
+  url('./assets/fonts/SFPro/SFProDisplay-Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
 }
@@ -219,7 +216,7 @@
 }
 
 * {
-  font-family: SF Pro Display;
+  font-family: "SF Pro Display", sans-serif;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -251,19 +248,15 @@
   height: 52px;
   width: 100%;
   border-radius: 12px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   text-decoration: none;
   border: none;
   box-shadow: none;
   outline: none;
   user-select: none;
   cursor: default;
-
-  //font-family: SF Pro Text;
   font-size: 17px;
   font-weight: 400;
   line-height: 24px;

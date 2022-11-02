@@ -20,6 +20,9 @@ const Tables = () => {
     const [firstAnswer, setFirstAnswer] = useState(null)
     const [secondAnswer, setSecondAnswer] = useState(null)
     const [thirdAnswer, setThirdAnswer] = useState(null)
+
+    const [tempAnswer, setTempAnswer] = useState(["", "", ""])
+
     const [questions, setQuestions] = useState(null)
     const [groups, setGroups] = useState(null)
     const [numberOfQuestion, setNumberOfQuestion] = useState(0)
@@ -31,49 +34,13 @@ const Tables = () => {
     });
 
     const colors = ["green", "red", "blue", "purple"]
-
-    //рабочий сервер переделать как тестовый!!!
-    // useEffect(() => {
-    //     axios.get('https://alexb.host/questions')
-    //         .then(({ data }) => {
-    //             setQuestions(data);
-    //         });
-    //     axios.get('https://alexb.host/groups')
-    //         .then(({ data }) => {
-    //             setGroups(data);
-    //         });
-    //     axios.get('https://alexb.host/groups')
-    //         .then(({ data }) => {
-    //             setStage(data[0]);
-    //         })
-    // }, []);
-
-    //тестовый сервер
-    useEffect(() => {
-        axios.get('https://alexb.host/testquestions')
-            .then(({ data }) => {
-                setQuestions(data);
-            });
-        axios.get('https://alexb.host/testgroups')
-            .then(({ data }) => {
-                setGroups(data);
-                setStage(data[0])
-            });
-    }, []);
-
-
-
-
-
+    
 
     // ВОПРОСЫ
 
     const nextQuestion = () => {
         saveAnswer(firstAnswer, secondAnswer, thirdAnswer)
         setQuestionId(questionId+1)
-        setFirstAnswer(userInfo?.answers[questionId+1]?.firstAnswer)
-        setSecondAnswer(userInfo?.answers[questionId+1]?.secondAnswer)
-        setThirdAnswer(userInfo?.answers[questionId+1]?.thirdAnswer)
         if (numberOfQuestion + 1 === stage.count) {
             nextStage()
         } else {
@@ -86,9 +53,9 @@ const Tables = () => {
         setQuestionId(questionId-1)
 
         // ставим ответы туда, где они были
-        setFirstAnswer(userInfo?.answers[questionId-1]?.firstAnswer)
-        setSecondAnswer(userInfo?.answers[questionId-1]?.secondAnswer)
-        setThirdAnswer(userInfo?.answers[questionId-1]?.thirdAnswer)
+
+        //temp
+        // setTempAnswer([...userInfo?.answers[questionId-1]])
 
 
         // переворачиваем стадию назад или понижаем номер вопроса
@@ -101,7 +68,6 @@ const Tables = () => {
 
 
     // СТАДИИ
-
     const nextStage = () => {
         if (stage.id + 1 < 5) {
             setNumberOfQuestion(0)
@@ -174,9 +140,42 @@ const Tables = () => {
         }
     }
 
+    //рабочий сервер переделать как тестовый!!!
+    // useEffect(() => {
+    //     axios.get('https://alexb.host/questions')
+    //         .then(({ data }) => {
+    //             setQuestions(data);
+    //         });
+    //     axios.get('https://alexb.host/groups')
+    //         .then(({ data }) => {
+    //             setGroups(data);
+    //         });
+    //     axios.get('https://alexb.host/groups')
+    //         .then(({ data }) => {
+    //             setStage(data[0]);
+    //         })
+    // }, []);
 
+    //тестовый сервер
+    useEffect(() => {
+        axios.get('https://alexb.host/testquestions')
+            .then(({ data }) => {
+                setQuestions(data);
+            });
+        axios.get('https://alexb.host/testgroups')
+            .then(({ data }) => {
+                setGroups(data);
+                setStage(data[0])
+            });
+    }, []);
 
-
+    // обращаемся к глобальному стейту, подтягиваем из него ответы и заполняем если они были
+    useEffect(()=> {
+            setFirstAnswer(userInfo?.answers[questionId]?.firstAnswer)
+            setSecondAnswer(userInfo?.answers[questionId]?.secondAnswer)
+            setThirdAnswer(userInfo?.answers[questionId]?.thirdAnswer)
+        }, [questionId]
+    )
 
 
     return (
@@ -235,16 +234,7 @@ const Tables = () => {
                 <div className="buttons">
                     <button className="btn btn-table btn-white-blue" onClick={ prevQuestion }>Назад</button>
                     <button
-                        // className="btn btn-table btn-blue"
                         disabled={!btnEnabled}
-                        // className={
-                        //     (btnEnabled) ?
-                        //         (
-                        //             "btn btn-table btn-blue"
-                        //         ) : (
-                        //             "btn btn-table btn-disabled"
-                        //         )
-                        // }
                         className={btnEnabled ? "btn btn-table btn-blue" : "btn btn-table btn-disabled" }
                         onClick={ nextQuestion }
                     >

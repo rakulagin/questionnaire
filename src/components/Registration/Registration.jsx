@@ -187,8 +187,6 @@ const Registration = () => {
                </div>
 
                <input
-                   // className="btn btn-white-blue"
-                   // disabled={!isValid}
                    className={isValid ? "btn btn-white-blue" : "btn btn-disabled"}
                    type="submit"
                    value="Продолжить"
