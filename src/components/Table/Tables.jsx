@@ -237,14 +237,15 @@ const Tables = () => {
                     <button
                         // className="btn btn-table btn-blue"
                         disabled={!btnEnabled}
-                        className={
-                            (btnEnabled) ?
-                                (
-                                    "btn btn-table btn-blue"
-                                ) : (
-                                    "btn btn-table btn-disabled"
-                                )
-                        }
+                        // className={
+                        //     (btnEnabled) ?
+                        //         (
+                        //             "btn btn-table btn-blue"
+                        //         ) : (
+                        //             "btn btn-table btn-disabled"
+                        //         )
+                        // }
+                        className={btnEnabled ? "btn btn-table btn-blue" : "btn btn-table btn-disabled" }
                         onClick={ nextQuestion }
                     >
                         Далее
