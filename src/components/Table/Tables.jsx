@@ -34,7 +34,7 @@ const Tables = () => {
     });
 
     const colors = ["green", "red", "blue", "purple"]
-    
+
 
     // ВОПРОСЫ
 
@@ -49,10 +49,7 @@ const Tables = () => {
     }
 
     const prevQuestion = () => {
-
         setQuestionId(questionId-1)
-
-        // ставим ответы туда, где они были
 
         //temp
         // setTempAnswer([...userInfo?.answers[questionId-1]])
@@ -181,13 +178,7 @@ const Tables = () => {
     return (
         <div className="mockup">
             <div className="mockup__wrapper">
-
-                {/*<p className="theme">{stage.group}</p>*/}
-                {/*<div className="theme__bar">*/}
-                {/*    <div className={`theme__bar-progress theme__bar-progress-${colors[stage.id-1]}`}*/}
-                {/*         style={{width: barWidth}}></div>*/}
-                {/*</div>*/}
-
+                
                 <ProgressBar
                     stage={stage}
                     numberOfQuestion={numberOfQuestion}

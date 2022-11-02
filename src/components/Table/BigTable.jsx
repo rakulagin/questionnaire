@@ -3,9 +3,6 @@ import LastRow from "./LastRow";
 
 const BigTable = ({state, setState}) => {
 
-
-
-    
     return (
         <>
             {
