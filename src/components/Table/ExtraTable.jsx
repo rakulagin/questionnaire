@@ -2,7 +2,7 @@ import React from "react";
 import LastRow from "./LastRow";
 import "../../index.scss"
 
-const ExtraTable = ({colors, stage, state, setState}) => {
+const ExtraTable = ({actualColor, state, setState}) => {
 
     return (
         <>
@@ -13,7 +13,7 @@ const ExtraTable = ({colors, stage, state, setState}) => {
                         <div key={index}
                              onClick = {e => setState(e.target.getAttribute('data-cords'))}
                              // className={state == index+1? "col active" : "col"}
-                             className={state == index+1? `col is-${colors[stage.id-1]}` : "col"}
+                             className={state == index+1? `col is-${actualColor}` : "col"}
                              data-cords={index + 1}>&nbsp;</div>)
                 }
             </div>

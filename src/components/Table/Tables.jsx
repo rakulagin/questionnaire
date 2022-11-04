@@ -35,6 +35,10 @@ const Tables = () => {
 
     const colors = ["green", "red", "blue", "purple"]
 
+    const actualColor = colors[stage.id-1]
+
+    console.log(actualColor)
+
 
     // ВОПРОСЫ
 
@@ -183,6 +187,7 @@ const Tables = () => {
                     stage={stage}
                     colors={colors}
                     numberOfQuestion={numberOfQuestion}
+                    actualColor={actualColor}
                 />
 
                 <h2 className="theme__question">
@@ -197,6 +202,7 @@ const Tables = () => {
                             <BigTable
                                 state={firstAnswer}
                                 setState={setFirstAnswer}
+                                actualColor={actualColor}
                             />
                         </div>
                     </div>
@@ -211,7 +217,7 @@ const Tables = () => {
                                 state={secondAnswer}
                                 setState={setSecondAnswer}
                                 stage={stage}
-                                colors={colors}
+                                actualColor={actualColor}
                             />
                         </div>
                     </div>
@@ -223,7 +229,7 @@ const Tables = () => {
                                 state={thirdAnswer}
                                 setState={setThirdAnswer}
                                 stage={stage}
-                                colors={colors}
+                                actualColor={actualColor}
                             />
                         </div>
                     </div>

@@ -7,7 +7,7 @@ import relations from '../../assets/relations.png'
 import person from '../../assets/person.svg'
 import sex from '../../assets/sex.png'
 
-const ProgressBar = ({stage, colors, numberOfQuestion}) => {
+const ProgressBar = ({actualColor, stage, numberOfQuestion}) => {
 
     const stageIcons = [lifestyle, relations, person, sex]
 
@@ -21,7 +21,7 @@ const ProgressBar = ({stage, colors, numberOfQuestion}) => {
             </div>
 
             <div className="bar">
-                <div className={`bar-progress is-${colors[stage.id-1]}`}
+                <div className={`bar-progress is-${actualColor}`}
                      style={{width: barWidth}}></div>
             </div>
         </>
