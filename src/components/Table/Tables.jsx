@@ -80,7 +80,7 @@ const Tables = () => {
     };
 
     const prevStage = () => {
-        if (stage.id == 1) {
+        if (parseInt(stage.id) === 1) {
             prevPage()
         } else {
             setNumberOfQuestion(groups[stage.id-2].count-1)
@@ -169,9 +169,9 @@ const Tables = () => {
 
     // обращаемся к глобальному стейту, подтягиваем из него ответы и заполняем если они были
     useEffect(()=> {
-            setFirstAnswer(userInfo?.answers[questionId]?.firstAnswer)
-            setSecondAnswer(userInfo?.answers[questionId]?.secondAnswer)
-            setThirdAnswer(userInfo?.answers[questionId]?.thirdAnswer)
+            setFirstAnswer(userInfo.answers[questionId]?.firstAnswer)
+            setSecondAnswer(userInfo.answers[questionId]?.secondAnswer)
+            setThirdAnswer(userInfo.answers[questionId]?.thirdAnswer)
         }, [questionId]
     )
 
