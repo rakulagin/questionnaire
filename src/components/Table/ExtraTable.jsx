@@ -4,21 +4,15 @@ import "../../index.scss"
 
 const ExtraTable = ({actualColor, state, setState}) => {
 
-    const [active, setActive] = useState(false)
-
-
-
      const click = (e) => {
-        if (!active) {
+        if (!state) {
             setState(e.target.getAttribute('data-cords'))
-            setActive(!active)
-        } else {
+        } else if (state === e.target.getAttribute('data-cords')) {
             setState(null)
-            setActive(active)
+        } else {
+            setState(e.target.getAttribute('data-cords'))
         }
      }
-
-    console.log(active)
 
     return (
         <>
@@ -27,9 +21,6 @@ const ExtraTable = ({actualColor, state, setState}) => {
                 {
                     [...Array(5)].map((el, index) =>
                         <div key={index}
-                             // onClick = {(e) => {
-                             //     setState(e.target.getAttribute('data-cords'))
-                             // }}
                              onClick={click}
                              className={parseInt(state) === index+1? `col is-${actualColor}` : "col"}
                              data-cords={index + 1}>&nbsp;</div>)
