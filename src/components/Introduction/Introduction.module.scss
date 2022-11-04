@@ -1,4 +1,4 @@
-.intro__title {
+.title {
   font-size: 32px;
   font-weight: 600;
   line-height: 40px;
@@ -6,7 +6,7 @@
   text-align: center;
 }
 
-.intro__text {
+.text {
   font-size: 17px;
   font-weight: 400;
   line-height: 24px;
@@ -15,7 +15,7 @@
   margin-bottom: 60px;
 }
 
-.intro__items {
+.items {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -23,17 +23,26 @@
   padding: 52px 0 47px 0;
 }
 
-.intro__item {
+.item {
   width: 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-.intro__item__image {
-  padding-bottom: 8px;
-}
-.intro__item__title {
-  padding-bottom: 8px;
-}
 
-/*# sourceMappingURL=Introduction.css.map */
+  &Image {
+    padding-bottom: 8px;
+  }
+
+  &Title {
+    padding-bottom: 8px;
+  }
+
+  &Text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15px;
+    letter-spacing: -0.15px;
+    color: #999999;
+  }
+}
