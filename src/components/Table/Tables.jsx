@@ -34,10 +34,7 @@ const Tables = () => {
     });
 
     const colors = ["green", "red", "blue", "purple"]
-
     const actualColor = colors[stage.id-1]
-
-    console.log(actualColor)
 
 
     // ВОПРОСЫ
