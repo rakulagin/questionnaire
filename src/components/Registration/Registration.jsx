@@ -32,7 +32,6 @@ const Registration = () => {
        <div className="mockup mockup__wrapper">
            <form onSubmit={handleSubmit(onSubmit)}>
 
-
                {/*<div className="input__block">*/}
                {/*    <label className="input__question">Как вас зовут?</label>*/}
                {/*    <input*/}
