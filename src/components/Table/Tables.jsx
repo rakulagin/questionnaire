@@ -138,7 +138,7 @@ const Tables = () => {
         }
     }
 
-    //рабочий сервер переделать как тестовый!!!
+    //рабочий сервер
     // useEffect(() => {
     //     axios.get('https://alexb.host/questions')
     //         .then(({ data }) => {
@@ -147,11 +147,8 @@ const Tables = () => {
     //     axios.get('https://alexb.host/groups')
     //         .then(({ data }) => {
     //             setGroups(data);
-    //         });
-    //     axios.get('https://alexb.host/groups')
-    //         .then(({ data }) => {
     //             setStage(data[0]);
-    //         })
+    //         });
     // }, []);
 
     //тестовый сервер
@@ -176,6 +173,10 @@ const Tables = () => {
     )
 
 
+
+    const lengthQuestion = questions && questions.filter((el) => el.group_id === stage.id)[numberOfQuestion].x.split("")
+
+
     return (
         <div className="mockup">
             <div className="mockup__wrapper">
@@ -192,7 +193,8 @@ const Tables = () => {
                 </h2>
                 <p className="theme__hint">Выберите значение по шкале от 1 до 5 для каждого утверждения</p>
                     <div className="table-wrapper">
-                        <div className="question question--text">
+                        {/*<div className="question question--text">*/}
+                        <div className={lengthQuestion?.length < 25? "question question--text" : "question question--text question--text-mini"}>
                            {questions && questions.filter((el) => el.group_id === stage.id)[numberOfQuestion].x}
                         </div>
                         <div className="table">
