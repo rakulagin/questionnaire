@@ -1,7 +1,7 @@
 .main {
   display: flex;
   flex-direction: column;
-  padding: 157px 40px 32px 40px;
+  padding: 90px 40px 32px 40px;
   font-size: 17px;
   font-weight: 400;
   line-height: 24px;
@@ -23,6 +23,7 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 289px;
+    gap: 30px;
   }
 
   &__button {
@@ -37,7 +38,9 @@
     background-color: #ffffff;
 
     &-tgLogo {
-      margin-left: 19px;
+      margin-left: 9px;
+      height: 36px;
+      width: 36px;
     }
 
     &:not(:last-child) {
@@ -46,6 +49,10 @@
   }
 
   &__license {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.5px;
     width: 304px;
     text-align: center;
     a {
