@@ -6,7 +6,7 @@ import BigTable from "./BigTable";
 import ExtraTable from "./ExtraTable";
 import ProgressBar from "../ProgressBar/ProgressBar";
 
-import DataContext from "../../context";
+import DataContext from "../../userInfoContext";
 
 import './Tables.scss'
 
@@ -76,7 +76,6 @@ const Tables = () => {
             });
         } else {
             nextPage()
-            console.log(userInfo)
         }
     };
 
@@ -97,6 +96,7 @@ const Tables = () => {
     // СТРАНИЦЫ
     const nextPage = () => {
         navigate("/final")
+        console.log(userInfo)
     }
 
     const prevPage = () => {

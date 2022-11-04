@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import './Registration.scss'
 import '../../index.scss'
 
-import DataContext from "../../context";
+import DataContext from "../../userInfoContext";
 
 const Registration = () => {
 

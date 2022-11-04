@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
-import DataContext from "./context";
+import DataContext from "./userInfoContext";
 
 import './index.scss';
 import App from './App';

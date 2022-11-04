@@ -6,7 +6,7 @@ import relations from '../../assets/relations.png'
 import person from '../../assets/person.svg'
 import sex from '../../assets/sex.png'
 
-import styles from './Introduction.module.scss'
+import styles from './introduction.module.scss'
 
 const Introduction = () => {
 

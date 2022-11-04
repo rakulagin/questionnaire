@@ -1,7 +1,6 @@
 .input__block:not(:last-of-type) {
   margin-bottom: 24px;
 }
-
 .input__question {
   font-size: 24px;
   font-weight: 700;
@@ -10,14 +9,12 @@
   text-align: left;
   margin-bottom: 24px;
 }
-
 .input__field {
   display: block;
   border: none;
   border-bottom: 1px solid #C7C7C7;
   width: 100%;
 }
-
 .input__radio {
   width: 16px;
   height: 16px;
@@ -25,7 +22,6 @@
 .input__radio:not(:first-of-type) {
   margin-left: 40px;
 }
-
 .input__answer {
   font-size: 24px;
   font-weight: 400;
