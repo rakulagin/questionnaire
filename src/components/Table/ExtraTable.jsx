@@ -2,14 +2,7 @@ import React from "react";
 import LastRow from "./LastRow";
 import "../../index.scss"
 
-const ExtraTable = ({state, setState, stage}) => {
-
-    const colors = ["green", "red", "blue", "purple"]
-
-    console.log("colors:", colors)
-    console.log("stage:", stage)
-    console.log("stage.id-1:", stage?.id-1)
-    console.log("----")
+const ExtraTable = ({colors, stage, state, setState}) => {
 
     return (
         <>

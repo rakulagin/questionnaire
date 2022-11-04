@@ -7,9 +7,8 @@ import relations from '../../assets/relations.png'
 import person from '../../assets/person.svg'
 import sex from '../../assets/sex.png'
 
-const ProgressBar = ({stage, numberOfQuestion}) => {
+const ProgressBar = ({stage, colors, numberOfQuestion}) => {
 
-    const colors = ["green", "red", "blue", "purple"]
     const stageIcons = [lifestyle, relations, person, sex]
 
     const barWidth = `${(numberOfQuestion+1) / stage.count * 100}%`

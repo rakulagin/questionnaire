@@ -181,6 +181,7 @@ const Tables = () => {
                 
                 <ProgressBar
                     stage={stage}
+                    colors={colors}
                     numberOfQuestion={numberOfQuestion}
                 />
 
@@ -209,6 +210,8 @@ const Tables = () => {
                             <ExtraTable
                                 state={secondAnswer}
                                 setState={setSecondAnswer}
+                                stage={stage}
+                                colors={colors}
                             />
                         </div>
                     </div>
@@ -220,6 +223,7 @@ const Tables = () => {
                                 state={thirdAnswer}
                                 setState={setThirdAnswer}
                                 stage={stage}
+                                colors={colors}
                             />
                         </div>
                     </div>
