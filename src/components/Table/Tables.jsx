@@ -21,7 +21,7 @@ const Tables = () => {
     const [secondAnswer, setSecondAnswer] = useState(null)
     const [thirdAnswer, setThirdAnswer] = useState(null)
 
-    const [tempAnswer, setTempAnswer] = useState(["", "", ""])
+    // const [tempAnswer, setTempAnswer] = useState(["", "", ""])
 
     const [questions, setQuestions] = useState(null)
     const [groups, setGroups] = useState(null)
@@ -219,6 +219,7 @@ const Tables = () => {
                             <ExtraTable
                                 state={thirdAnswer}
                                 setState={setThirdAnswer}
+                                stage={stage}
                             />
                         </div>
                     </div>

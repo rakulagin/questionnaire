@@ -194,4 +194,20 @@
   outline: 1px solid #006BE0;
 }
 
+.is-green {
+  background: #008960;
+}
+
+.is-red {
+  background: #DE2424;
+}
+
+.is-blue {
+  background: #0053B5;
+}
+
+.is-purple {
+  background: #91009E;
+}
+
 /*# sourceMappingURL=index.css.map */

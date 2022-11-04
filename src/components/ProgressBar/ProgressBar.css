@@ -27,33 +27,5 @@
 .bar-progress {
   height: 100%;
 }
-.bar-progress-green {
-  background-color: #008960;
-}
-.bar-progress-red {
-  background-color: #DE2424;
-}
-.bar-progress-blue {
-  background-color: #0053B5;
-}
-.bar-progress-purple {
-  background-color: #91009E;
-}
-
-.green {
-  background-color: #008960;
-}
-
-.red {
-  background-color: #DE2424;
-}
-
-.blue {
-  background-color: #0053B5;
-}
-
-.purple {
-  background-color: #91009E;
-}
 
 /*# sourceMappingURL=ProgressBar.css.map */
