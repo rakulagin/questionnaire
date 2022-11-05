@@ -1,5 +1,5 @@
-import React, {useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import React, {useState, useEffect, useContext} from "react";
+import {useNavigate} from "react-router-dom";
 import axios from 'axios'
 
 import BigTable from "./BigTable";
@@ -34,23 +34,23 @@ const Tables = () => {
     });
 
     const colors = ["green", "red", "blue", "purple"]
-    const actualColor = colors[stage.id-1]
+    const actualColor = colors[stage.id - 1]
 
 
     // ВОПРОСЫ
 
     const nextQuestion = () => {
         saveAnswer(firstAnswer, secondAnswer, thirdAnswer)
-        setQuestionId(questionId+1)
+        setQuestionId(questionId + 1)
         if (numberOfQuestion + 1 === stage.count) {
             nextStage()
         } else {
-            setNumberOfQuestion(numberOfQuestion+1)
+            setNumberOfQuestion(numberOfQuestion + 1)
         }
     }
 
     const prevQuestion = () => {
-        setQuestionId(questionId-1)
+        setQuestionId(questionId - 1)
 
         //temp
         // setTempAnswer([...userInfo?.answers[questionId-1]])
@@ -60,7 +60,7 @@ const Tables = () => {
         if (numberOfQuestion === 0) {
             prevStage()
         } else {
-            setNumberOfQuestion(numberOfQuestion-1)
+            setNumberOfQuestion(numberOfQuestion - 1)
         }
     }
 
@@ -83,7 +83,7 @@ const Tables = () => {
         if (parseInt(stage.id) === 1) {
             prevPage()
         } else {
-            setNumberOfQuestion(groups[stage.id-2].count-1)
+            setNumberOfQuestion(groups[stage.id - 2].count - 1)
             setStage({
                 id: stage.id - 1,
                 group: groups[stage.id - 2].group,
@@ -104,9 +104,7 @@ const Tables = () => {
     }
 
 
-
     const btnEnabled = (firstAnswer && secondAnswer && thirdAnswer) ? true : false
-
 
 
     const saveAnswer = (firstAnswer, secondAnswer, thirdAnswer) => {
@@ -154,24 +152,23 @@ const Tables = () => {
     //тестовый сервер
     useEffect(() => {
         axios.get('https://alexb.host/testquestions')
-            .then(({ data }) => {
+            .then(({data}) => {
                 setQuestions(data);
             });
         axios.get('https://alexb.host/testgroups')
-            .then(({ data }) => {
+            .then(({data}) => {
                 setGroups(data);
                 setStage(data[0])
             });
     }, []);
 
     // обращаемся к глобальному стейту, подтягиваем из него ответы и заполняем если они были
-    useEffect(()=> {
+    useEffect(() => {
             setFirstAnswer(userInfo.answers[questionId]?.firstAnswer)
             setSecondAnswer(userInfo.answers[questionId]?.secondAnswer)
             setThirdAnswer(userInfo.answers[questionId]?.thirdAnswer)
         }, [questionId]
     )
-
 
 
     const lengthQuestion = questions && questions.filter((el) => el.group_id === stage.id)[numberOfQuestion].x.split("")
@@ -180,7 +177,7 @@ const Tables = () => {
     return (
         <div className="mockup">
             <div className="mockup__wrapper">
-                
+
                 <ProgressBar
                     stage={stage}
                     colors={colors}
@@ -192,52 +189,53 @@ const Tables = () => {
                     {questions && questions.filter((el) => el.group_id === stage.id)[numberOfQuestion].question}
                 </h2>
                 <p className="theme__hint">Выберите значение по шкале от 1 до 5 для каждого утверждения</p>
-                    <div className="table-wrapper">
-                        {/*<div className="question question--text">*/}
-                        <div className={lengthQuestion?.length < 25? "question question--text" : "question question--text question--text-mini"}>
-                           {questions && questions.filter((el) => el.group_id === stage.id)[numberOfQuestion].x}
-                        </div>
-                        <div className="table">
-                            <BigTable
-                                state={firstAnswer}
-                                setState={setFirstAnswer}
-                                actualColor={actualColor}
-                            />
-                        </div>
+                <div className="table-wrapper">
+                    {/*<div className="question question--text">*/}
+                    <div
+                        className={lengthQuestion?.length < 25 ? "question question--text" : "question question--text question--text-mini"}>
+                        {questions && questions.filter((el) => el.group_id === stage.id)[numberOfQuestion].x}
                     </div>
-                    <div className="question2 question--text">
-                        {questions && questions.filter((el) => el.group_id === stage.id)[numberOfQuestion].y}
+                    <div className="table">
+                        <BigTable
+                            state={firstAnswer}
+                            setState={setFirstAnswer}
+                            actualColor={actualColor}
+                        />
                     </div>
+                </div>
+                <div className="question2 question--text">
+                    {questions && questions.filter((el) => el.group_id === stage.id)[numberOfQuestion].y}
+                </div>
 
-                    <div className="extra-table-wrapper">
-                        <div className="extra-question">На сколько эта ценность и вопрос понятны для вас?</div>
-                        <div className="table">
-                            <ExtraTable
-                                state={secondAnswer}
-                                setState={setSecondAnswer}
-                                stage={stage}
-                                actualColor={actualColor}
-                            />
-                        </div>
+                <div className="extra-table-wrapper">
+                    <div className="extra-question">На сколько эта ценность и вопрос понятны для вас?</div>
+                    <div className="table">
+                        <ExtraTable
+                            state={secondAnswer}
+                            setState={setSecondAnswer}
+                            stage={stage}
+                            actualColor={actualColor}
+                        />
                     </div>
+                </div>
 
-                    <div className="extra-table-wrapper">
-                        <div className="extra-question">Важность этого вопроса для отношений</div>
-                        <div className="table">
-                            <ExtraTable
-                                state={thirdAnswer}
-                                setState={setThirdAnswer}
-                                stage={stage}
-                                actualColor={actualColor}
-                            />
-                        </div>
+                <div className="extra-table-wrapper">
+                    <div className="extra-question">Важность этого вопроса для отношений</div>
+                    <div className="table">
+                        <ExtraTable
+                            state={thirdAnswer}
+                            setState={setThirdAnswer}
+                            stage={stage}
+                            actualColor={actualColor}
+                        />
                     </div>
+                </div>
                 <div className="buttons">
-                    <button className="btn btn-table btn-white-blue" onClick={ prevQuestion }>Назад</button>
+                    <button className="btn btn-table btn-white-blue" onClick={prevQuestion}>Назад</button>
                     <button
                         disabled={!btnEnabled}
-                        className={btnEnabled ? "btn btn-table btn-blue" : "btn btn-table btn-disabled" }
-                        onClick={ nextQuestion }
+                        className={btnEnabled ? "btn btn-table btn-blue" : "btn btn-table btn-disabled"}
+                        onClick={nextQuestion}
                     >
                         Далее
                     </button>
