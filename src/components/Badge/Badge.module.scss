@@ -5,3 +5,10 @@
   border-radius: 30px;
   border: 1px solid;
 }
+
+.badge__wrp {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}

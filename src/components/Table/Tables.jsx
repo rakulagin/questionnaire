@@ -10,6 +10,7 @@ import Badge from "../Badge/Badge"
 import DataContext from "../../userInfoContext";
 
 import './Tables.scss'
+import Badges from "../Badge/Bages";
 
 
 const Tables = () => {
@@ -52,10 +53,6 @@ const Tables = () => {
 
     const prevQuestion = () => {
         setQuestionId(questionId - 1)
-
-        //temp
-        // setTempAnswer([...userInfo?.answers[questionId-1]])
-
 
         // переворачиваем стадию назад или понижаем номер вопроса
         if (numberOfQuestion === 0) {
@@ -137,19 +134,17 @@ const Tables = () => {
         }
     }
 
+    // это нужно для высчитывания длины вопроса по вертикали, чтобы изменять размер шрифта
     const lengthQuestion = questions && questions.filter((el) => el.group_id === stage.id)[numberOfQuestion].x.split("")
 
-    const tempArr = [...Array(stage.count)]
-
     const tempClick = (e) => {
-        console.log("index inside tempclick", e)
+        console.log("index inside", e)
         // console.log(e.target.getAttribute("index"))
         // const index = e.target.getAttribute("index")
         // setNumberOfQuestion(index)
         // setQuestionId(questionId - 1)
 
     }
-
 
     //рабочий сервер
     // useEffect(() => {
@@ -185,9 +180,8 @@ const Tables = () => {
         }, [questionId]
     )
 
-
-    console.log("questionId:", questionId)
-    // console.log(questions && questions.filter((el) => el.group_id === stage.id)[numberOfQuestion].x)
+    console.log("stage", stage)
+    console.log("---")
 
     return (
         <div className="mockup">
@@ -200,17 +194,22 @@ const Tables = () => {
                     actualColor={actualColor}
                 />
 
-                <div className="badge__wrp">
-                    {
-                        tempArr.map((el, index) =>
-                            <Badge
-                                click = {tempClick}
-                                key={index}
-                                index={index}
-                            />
-                        )
-                    }
-                </div>
+                <Badges
+                    stage={stage}
+                    click = {tempClick}
+                />
+
+                {/*<div className="badge__wrp">*/}
+                {/*    {*/}
+                {/*        tempArr.map((el, index) =>*/}
+                {/*            <Badge*/}
+                {/*                click = {tempClick}*/}
+                {/*                key={index}*/}
+                {/*                index={index}*/}
+                {/*            />*/}
+                {/*        )*/}
+                {/*    }*/}
+                {/*</div>*/}
 
                 <h2 className="theme__question">
                     {questions && questions.filter((el) => el.group_id === stage.id)[numberOfQuestion].question}
