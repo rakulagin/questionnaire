@@ -5,7 +5,6 @@ import axios from 'axios'
 import BigTable from "./BigTable";
 import ExtraTable from "./ExtraTable";
 import ProgressBar from "../ProgressBar/ProgressBar";
-import Badge from "../Badge/Badge"
 
 import DataContext from "../../userInfoContext";
 
@@ -35,12 +34,14 @@ const Tables = () => {
         count: 1
     });
 
+    // экспериментальный стейт
+    const [pastStages, addPastStages] = useState(0)
+
     const colors = ["green", "red", "blue", "purple"]
     const actualColor = colors[stage.id - 1]
 
 
     // ВОПРОСЫ
-
     const nextQuestion = () => {
         saveAnswer(firstAnswer, secondAnswer, thirdAnswer)
         setQuestionId(questionId + 1)
@@ -62,10 +63,10 @@ const Tables = () => {
         }
     }
 
-
     // СТАДИИ
     const nextStage = () => {
         if (stage.id + 1 < 5) {
+            accumBadges()
             setNumberOfQuestion(0)
             setStage({
                 id: stage.id + 1,
@@ -90,7 +91,6 @@ const Tables = () => {
         }
     }
 
-
     // СТРАНИЦЫ
     const nextPage = () => {
         navigate("/final")
@@ -101,9 +101,9 @@ const Tables = () => {
         navigate("/introduction")
     }
 
+    // ОСТАЛЬНЫЕ МЕТОДЫ
 
     const btnEnabled = (firstAnswer && secondAnswer && thirdAnswer) ? true : false
-
 
     const saveAnswer = (firstAnswer, secondAnswer, thirdAnswer) => {
         // пакуем ответы во временный объект и либо добавляем в конец массива либо заменяем текущий элемент
@@ -137,13 +137,15 @@ const Tables = () => {
     // это нужно для высчитывания длины вопроса по вертикали, чтобы изменять размер шрифта
     const lengthQuestion = questions && questions.filter((el) => el.group_id === stage.id)[numberOfQuestion].x.split("")
 
-    const tempClick = (e) => {
+    const badgeClick = (e) => {
         console.log("index inside", e)
-        // console.log(e.target.getAttribute("index"))
-        // const index = e.target.getAttribute("index")
-        // setNumberOfQuestion(index)
-        // setQuestionId(questionId - 1)
+        setNumberOfQuestion(e)
+        setQuestionId(e + pastStages)
+    }
 
+    const accumBadges = () => {
+        const tempObj = stage.count + pastStages
+        addPastStages(tempObj)
     }
 
     //рабочий сервер
@@ -172,7 +174,7 @@ const Tables = () => {
             });
     }, []);
 
-    // обращаемся к глобальному стейту, подтягиваем из него ответы и заполняем если они были
+    // обращаемся к глобальному Cтейту, подтягиваем из него ответы и заполняем если они были
     useEffect(() => {
             setFirstAnswer(userInfo.answers[questionId]?.firstAnswer)
             setSecondAnswer(userInfo.answers[questionId]?.secondAnswer)
@@ -180,8 +182,12 @@ const Tables = () => {
         }, [questionId]
     )
 
-    console.log("stage", stage)
+    // console.log("answers", userInfo.answers.length)
+    console.log("number of question", numberOfQuestion)
+    console.log("questionID now", questionId)
+    console.log("paststages", pastStages)
     console.log("---")
+
 
     return (
         <div className="mockup">
@@ -196,7 +202,7 @@ const Tables = () => {
 
                 <Badges
                     stage={stage}
-                    click = {tempClick}
+                    click = {badgeClick}
                 />
 
                 {/*<div className="badge__wrp">*/}

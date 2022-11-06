@@ -4,9 +4,11 @@ import styles from "./Badge.module.scss"
 
 import Badge from "./Badge";
 
-const Badges = ({stage, click, index}) => {
+const Badges = ({stage, click}) => {
 
     const tempArr = [...Array(stage.count)]
+
+
 
     return (
         <div className={styles.badge__wrp}>
