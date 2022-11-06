@@ -5,6 +5,7 @@ import axios from 'axios'
 import BigTable from "./BigTable";
 import ExtraTable from "./ExtraTable";
 import ProgressBar from "../ProgressBar/ProgressBar";
+import Badge from "../Badge/Badge"
 
 import DataContext from "../../userInfoContext";
 
@@ -136,6 +137,20 @@ const Tables = () => {
         }
     }
 
+    const lengthQuestion = questions && questions.filter((el) => el.group_id === stage.id)[numberOfQuestion].x.split("")
+
+    const tempArr = [...Array(stage.count)]
+
+    const tempClick = (e) => {
+        console.log("index inside tempclick", e)
+        // console.log(e.target.getAttribute("index"))
+        // const index = e.target.getAttribute("index")
+        // setNumberOfQuestion(index)
+        // setQuestionId(questionId - 1)
+
+    }
+
+
     //рабочий сервер
     // useEffect(() => {
     //     axios.get('https://alexb.host/questions')
@@ -171,8 +186,8 @@ const Tables = () => {
     )
 
 
-    const lengthQuestion = questions && questions.filter((el) => el.group_id === stage.id)[numberOfQuestion].x.split("")
-
+    console.log("questionId:", questionId)
+    // console.log(questions && questions.filter((el) => el.group_id === stage.id)[numberOfQuestion].x)
 
     return (
         <div className="mockup">
@@ -184,6 +199,18 @@ const Tables = () => {
                     numberOfQuestion={numberOfQuestion}
                     actualColor={actualColor}
                 />
+
+                <div className="badge__wrp">
+                    {
+                        tempArr.map((el, index) =>
+                            <Badge
+                                click = {tempClick}
+                                key={index}
+                                index={index}
+                            />
+                        )
+                    }
+                </div>
 
                 <h2 className="theme__question">
                     {questions && questions.filter((el) => el.group_id === stage.id)[numberOfQuestion].question}

@@ -17,17 +17,14 @@ const Instruction = () => {
     const [flag, setFlag] = useState(false)
 
     const clickFirst = () => {
-        console.log("clickFirst")
         if (flag) { visible2 ? setVisible2(false) : setVisible1(true) }
     }
 
     const clickSecond = () => {
-        console.log("clickSecond")
         if (flag) { visible1 ? setVisible1(false) : setVisible2(true) }
     }
 
     const clickSomewhere = () => {
-        console.log("someWhere")
         if (!flag) {
             if (!visible2) {
                 setVisible1(false)

@@ -2,6 +2,13 @@
   padding: 44px 40px 76px 40px;
 }
 
+.badge__wrp {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
 .theme__question {
   height: 80px;
 }
