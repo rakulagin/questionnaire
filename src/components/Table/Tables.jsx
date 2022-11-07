@@ -18,25 +18,25 @@ const Tables = () => {
 
     const navigate = useNavigate()
 
+    // ответы на первый, второй, третий вопрос
     const [firstAnswer, setFirstAnswer] = useState(null)
     const [secondAnswer, setSecondAnswer] = useState(null)
     const [thirdAnswer, setThirdAnswer] = useState(null)
 
-    // const [tempAnswer, setTempAnswer] = useState(["", "", ""])
-
+    // весь список вопросов, массив объектов
     const [questions, setQuestions] = useState(null)
+    // список групп вопросов, массив объектов
     const [groups, setGroups] = useState(null)
+    //номер вопроса в текущей группе
     const [numberOfQuestion, setNumberOfQuestion] = useState(0)
+    // ID вопроса
     const [questionId, setQuestionId] = useState(0)
+    // текущая стадия
     const [stage, setStage] = useState({
         id: 1,
         group: "",
         count: 1
     });
-
-    // экспериментальный стейт
-    const [pastStages, addPastStages] = useState(0)
-    const [previousStage, setPreviousStage] = useState(null)
 
     const colors = ["green", "red", "blue", "purple"]
     const actualColor = colors[stage.id - 1]
@@ -67,8 +67,6 @@ const Tables = () => {
     // СТАДИИ
     const nextStage = () => {
         if (stage.id + 1 < 5) {
-            setPreviousStage(stage)
-            sumBadges()
             setNumberOfQuestion(0)
             setStage({
                 id: stage.id + 1,
@@ -90,8 +88,6 @@ const Tables = () => {
                 group: groups[stage.id - 2].group,
                 count: groups[stage.id - 2].count
             })
-            console.log("stage inside", stage)
-            subBadges()
         }
     }
 
@@ -143,21 +139,26 @@ const Tables = () => {
     const lengthQuestion = questions && questions.filter((el) => el.group_id === stage.id)[numberOfQuestion].x.split("")
 
     const badgeClick = (e) => {
-        setNumberOfQuestion(e)
-        setQuestionId(e + pastStages)
+        console.log("dot",e)
+        // total()
+        console.log("total", total())
+        console.log("question id", questionId)
+        // setNumberOfQuestion(e)
+        // setQuestionId(e)
     }
 
-    const sumBadges = () => {
-        const tempObj = stage.count + pastStages
-        addPastStages(tempObj)
+    const total = () => {
+        let temp = 0
+        for (let i=1; i<stage.id; i++) {
+            console.log("stage id", stage.id)
+            console.log("stage count:", stage.count)
+            console.log("---")
+            temp = temp + groups[i].count
+
+        }
+        return temp
     }
 
-    const subBadges = () => {
-        console.log("inside stage", stage)
-        const tempObj = pastStages - previousStage.count
-        addPastStages(tempObj)
-
-    }
 
     //рабочий сервер
     // useEffect(() => {
@@ -193,19 +194,11 @@ const Tables = () => {
         }, [questionId]
     )
 
-    // useEffect(() => {
-    //     subBadges()
-    //         console.log("stage useEffect", stage)
-    //     }, [stage]
-    // )
 
-    // console.log("answers", userInfo.answers.length)
-    // console.log("number of question", numberOfQuestion)
-    // console.log("questionID now", questionId)
-    // console.log("outside stage count1", stage)
-    console.log("paststages", pastStages)
-    console.log("previousStage:", previousStage)
-    console.log("---")
+    // console.log("questions:", questions)
+    // console.log("groups:", groups)
+    // console.log("stage:", stage)
+    // console.log("---")
 
 
     return (
@@ -217,11 +210,6 @@ const Tables = () => {
                     colors={colors}
                     numberOfQuestion={numberOfQuestion}
                     actualColor={actualColor}
-                />
-
-                <Badges
-                    stage={stage}
-                    click={badgeClick}
                 />
 
                 <h2 className="theme__question">
@@ -279,6 +267,11 @@ const Tables = () => {
                         Далее
                     </button>
                 </div>
+                <Badges
+                    stage={stage}
+                    click={badgeClick}
+                    questions={questions}
+                />
             </div>
         </div>
     )

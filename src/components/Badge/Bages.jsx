@@ -4,16 +4,15 @@ import styles from "./Badge.module.scss"
 
 import Badge from "./Badge";
 
-const Badges = ({stage, click}) => {
+const Badges = ({stage, click, questions}) => {
 
-    const tempArr = [...Array(stage.count)]
-
-
+    // const tempArr = [...Array(stage.count)]
 
     return (
         <div className={styles.badge__wrp}>
             {
-                tempArr.map((el, index) =>
+                // тут раньше был tempArr.map
+                questions?.map((el, index) =>
                     <Badge
                         click = {click}
                         key={index}
