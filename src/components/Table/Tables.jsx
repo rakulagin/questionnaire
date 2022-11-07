@@ -36,6 +36,7 @@ const Tables = () => {
 
     // экспериментальный стейт
     const [pastStages, addPastStages] = useState(0)
+    const [previousStage, setPreviousStage] = useState(null)
 
     const colors = ["green", "red", "blue", "purple"]
     const actualColor = colors[stage.id - 1]
@@ -66,7 +67,8 @@ const Tables = () => {
     // СТАДИИ
     const nextStage = () => {
         if (stage.id + 1 < 5) {
-            accumBadges()
+            setPreviousStage(stage)
+            sumBadges()
             setNumberOfQuestion(0)
             setStage({
                 id: stage.id + 1,
@@ -88,6 +90,8 @@ const Tables = () => {
                 group: groups[stage.id - 2].group,
                 count: groups[stage.id - 2].count
             })
+            console.log("stage inside", stage)
+            subBadges()
         }
     }
 
@@ -143,9 +147,16 @@ const Tables = () => {
         setQuestionId(e + pastStages)
     }
 
-    const accumBadges = () => {
+    const sumBadges = () => {
         const tempObj = stage.count + pastStages
         addPastStages(tempObj)
+    }
+
+    const subBadges = () => {
+        console.log("inside stage", stage)
+        const tempObj = pastStages - previousStage.count
+        addPastStages(tempObj)
+
     }
 
     //рабочий сервер
@@ -182,10 +193,18 @@ const Tables = () => {
         }, [questionId]
     )
 
+    // useEffect(() => {
+    //     subBadges()
+    //         console.log("stage useEffect", stage)
+    //     }, [stage]
+    // )
+
     // console.log("answers", userInfo.answers.length)
-    console.log("number of question", numberOfQuestion)
-    console.log("questionID now", questionId)
+    // console.log("number of question", numberOfQuestion)
+    // console.log("questionID now", questionId)
+    // console.log("outside stage count1", stage)
     console.log("paststages", pastStages)
+    console.log("previousStage:", previousStage)
     console.log("---")
 
 
@@ -202,20 +221,8 @@ const Tables = () => {
 
                 <Badges
                     stage={stage}
-                    click = {badgeClick}
+                    click={badgeClick}
                 />
-
-                {/*<div className="badge__wrp">*/}
-                {/*    {*/}
-                {/*        tempArr.map((el, index) =>*/}
-                {/*            <Badge*/}
-                {/*                click = {tempClick}*/}
-                {/*                key={index}*/}
-                {/*                index={index}*/}
-                {/*            />*/}
-                {/*        )*/}
-                {/*    }*/}
-                {/*</div>*/}
 
                 <h2 className="theme__question">
                     {questions && questions.filter((el) => el.group_id === stage.id)[numberOfQuestion].question}
