@@ -107,7 +107,8 @@ const Tables = () => {
 
     // ОСТАЛЬНЫЕ МЕТОДЫ
 
-    const btnEnabled = (firstAnswer && secondAnswer && thirdAnswer) ? true : false
+    // const btnEnabled = (firstAnswer && secondAnswer && thirdAnswer) ? true : false
+    const btnEnabled = (firstAnswer) ? true : false
 
     const saveAnswer = (firstAnswer, secondAnswer, thirdAnswer) => {
         // пакуем ответы во временный объект и либо добавляем в конец массива либо заменяем текущий элемент
@@ -142,7 +143,6 @@ const Tables = () => {
     const lengthQuestion = questions && questions.filter((el) => el.group_id === stage.id)[numberOfQuestion].x.split("")
 
     const badgeClick = (e) => {
-        console.log("index inside", e)
         setNumberOfQuestion(e)
         setQuestionId(e + pastStages)
     }
@@ -246,29 +246,29 @@ const Tables = () => {
                     {questions && questions.filter((el) => el.group_id === stage.id)[numberOfQuestion].y}
                 </div>
 
-                <div className="extra-table-wrapper">
-                    <div className="extra-question">На сколько эта ценность и вопрос понятны для вас?</div>
-                    <div className="table">
-                        <ExtraTable
-                            state={secondAnswer}
-                            setState={setSecondAnswer}
-                            stage={stage}
-                            actualColor={actualColor}
-                        />
-                    </div>
-                </div>
+                {/*<div className="extra-table-wrapper">*/}
+                {/*    <div className="extra-question">На сколько эта ценность и вопрос понятны для вас?</div>*/}
+                {/*    <div className="table">*/}
+                {/*        <ExtraTable*/}
+                {/*            state={secondAnswer}*/}
+                {/*            setState={setSecondAnswer}*/}
+                {/*            stage={stage}*/}
+                {/*            actualColor={actualColor}*/}
+                {/*        />*/}
+                {/*    </div>*/}
+                {/*</div>*/}
 
-                <div className="extra-table-wrapper">
-                    <div className="extra-question">Важность этого вопроса для отношений</div>
-                    <div className="table">
-                        <ExtraTable
-                            state={thirdAnswer}
-                            setState={setThirdAnswer}
-                            stage={stage}
-                            actualColor={actualColor}
-                        />
-                    </div>
-                </div>
+                {/*<div className="extra-table-wrapper">*/}
+                {/*    <div className="extra-question">Важность этого вопроса для отношений</div>*/}
+                {/*    <div className="table">*/}
+                {/*        <ExtraTable*/}
+                {/*            state={thirdAnswer}*/}
+                {/*            setState={setThirdAnswer}*/}
+                {/*            stage={stage}*/}
+                {/*            actualColor={actualColor}*/}
+                {/*        />*/}
+                {/*    </div>*/}
+                {/*</div>*/}
                 <div className="buttons">
                     <button className="btn btn-table btn-white-blue" onClick={prevQuestion}>Назад</button>
                     <button
